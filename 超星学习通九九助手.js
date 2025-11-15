@@ -1,0 +1,3604 @@
+// ==UserScript==
+// @name         超星学习通九九助手[AI答题][一键启动][最小化运行]
+// @name:zh-TW   超星學習通九九助手[AI答題][一鍵啟動][最小化運行]
+// @name:en      Chaoxing Automatic Learning Tool[AI Answer][One-click start] [Minimize run]
+// @description  【可手机挂机】支持【超星学习通】【学银在线】【超星系统的继续教育】的视频、章节测试、文档、直播、作业、考试；脚本一键启动、单页面全自动运行、可最小化运行不会中断；不占网速、不费流量，开热点也能用；【三亿题库】题目覆盖率99%，支持单选、多选、填空、判断【图片题、编程题、听力题】；题目答案实时收录，轻松拿高分
+// @description:zh-TW  【可手机挂机】支援【超星學習通】【學銀線上】【超星系統的繼續教育】的影片、章節測驗、文件、直播、作業、考試；腳本一鍵啟動、單頁全自動運作、可最小化運作不會中斷；不佔網速、不費流量，開熱點也能用；【三億題庫】題目覆蓋率99%，支持單選、多選、填空、判斷【圖片題、程式設計題、聽力題】；題目答案即時收錄，輕鬆拿高分
+// @description:en     【mobile phone supported】Supports videos, chapter tests, documents, live broadcasts, homework, and exams of [Chaoxing], [Xueyin Online]; scripts can be started with one click, run automatically on a single page, and can be minimized and run without interruption; does not occupy network speed or traffic; [300 millions questions] covers 99% of questions, supports single-choice, multiple-choice, fill-in-the-blank, judgment [picture questions, programming questions, listening questions]
+// @antifeature payment  脚本会请求第三方收费题库进行答题，您可以选择付费或停用答题功能
+// @antifeature:zh-TW payment  腳本會請求第三方收費題庫進行答題，您可以選擇付費或停用答案功能
+// @antifeature:en payment  The script will request a third-party paid question bank to answer questions. You can choose to pay or disable the answering function.
+// @namespace    申禅姌
+// @version      2.6.3
+// @author       申禅姌
+// @run-at       document-end
+// @storageName  申禅姌
+// @match        *://*/*
+// @icon         https://d2.ananas.chaoxing.com/download/e1cd575a26bef1be8eac7bc240bd0066?at_=1758127482630&ak_=37ec368f380c0277e2dce6806ad21e84&ad_=95e8da3baa643c7dc2bb08acba4b6b6e
+// @grant        unsafeWindow
+// @grant        GM_xmlhttpRequest
+// @grant        GM_setValue
+// @grant        GM_getValue
+//👇👇👇👇👇👇👇👇Please fill in the code prompted by the script into the blanks below, one per line, and press Ctrl+S to save.👇👇👇👇👇👇👇👇
+//👇👇👇👇👇👇👇👇請將腳本提示的程式碼填入下面空白中，一行一個，按Ctrl+S儲存👇👇👇👇👇👇👇
+//👇👇👇👇👇👇👇👇请将脚本提示的代码填入下面空白中，一行一个，按Ctrl+S保存👇👇👇👇👇👇👇👇
+
+
+
+
+//👆👆👆👆👆👆👆👆请将脚本提示的代码填入上面空白中，一行一个，按Ctrl+S保存👆👆👆👆👆👆👆👆
+//👆👆👆👆👆👆👆👆請將腳本提示的程式碼填入上面空白中，一行一個，按Ctrl+S儲存👆👆👆👆👆👆👆
+//👆👆👆👆👆👆👆👆Please fill in the code prompted by the script into the blanks above, one per line, and press Ctrl+S to save.👆👆👆👆👆👆👆
+// @connect      mooc1.wljx.hfut.edu.cn
+// @connect      mooc1.chaoxing.com
+// @connect      mooc1-1.chaoxing.com
+// @connect      mooc1-api.chaoxing.com
+// @connect      zhibo.chaoxing.com
+// @connect      mooc1.hnust.edu.cn
+// @connect      stat2-ans.hnust.edu.cn
+// @connect      stat2-ans.chaoxing.com
+// @connect      mooc1.hnsyu.net
+// @connect      passport2.xust.edu.cn
+// @connect      stat2-ans.hnsyu.net
+// @connect      scriptcat.cn
+// @connect      passport2.hnsyu.net
+// @connect      mooc1.gdhkmooc.com
+// @connect      stat2-ans.gdhkmooc.com
+// @connect      mooc1.zut.edu.cn
+// @connect      passport2.hncj.edu.cn
+// @connect      stat2-ans.zut.edu.cn
+// @connect      scriptcat.org
+// @connect      passport2.jxjyzx.xust.edu.cn
+// @connect      passport2.zut.edu.cn
+// @connect      stat2-ans.wljx.hfut.edu.cn
+// @connect      tk.wanjuantiku.com
+// @connect      passport2.wljx.hfut.edu.cn
+// @connect      mooc1.hncj.edu.cn
+// @connect      stat2-ans.hncj.edu.cn
+// @connect      mooc1.qutjxjy.cn
+// @connect      stat2-ans.qutjxjy.cn
+// @connect      passport2.hnust.edu.cn
+// @connect      passport2.cqrspx.cn
+// @connect      ans2.tk.icu
+// @connect      passport2.gdhkmooc.com
+// @connect      passport2.qutjxjy.cn
+// @connect      mooc1.jxjyzx.xust.edu.cn
+// @connect      mooc2-ans.chaoxing.com
+// @connect      passport2.hnvist.cn
+// @connect      passport2.cugbonline.cn
+// @connect      passport2.chaoxing.com
+// @connect      stat2-ans.jxjyzx.xust.edu.cn
+// @connect      mooc1.xueyinonline.com
+// @connect      passport2.ynny.cn
+// @connect      passport2.ecnusole.com
+// @connect      stat2-ans.xueyinonline.com
+// @connect      ans.tk.icu
+// @connect      passport2.xueyinonline.com
+// @connect      mooc1.cqrspx.cn
+// @connect      stat2-ans.cqrspx.cn
+// @connect      mooc1-2.chaoxing.com
+// @connect      mooc1.ynny.cn
+// @connect      tk.tk.icu
+// @connect      stat2-ans.ynny.cn
+// @connect      mooc1.cugbonline.cn
+// @connect      stat2-ans.cugbonline.cn
+// @connect      mooc1.xust.edu.cn
+// @connect      stat2-ans.xust.edu.cn
+// @connect      mooc1.xynu.edu.cn
+// @connect      mooc1.ntu.edu.cn
+// @connect      stat2-ans.xynu.edu.cn
+// @connect      stat2-ans.ntu.edu.cn
+// @connect      mooc1.hnvist.cn
+// @connect      stat2-ans.hnvist.cn
+// @connect      passport2.xynu.edu.cn
+// @connect      passport2.ntu.edu.cn
+// @connect      mooc1.ecnusole.com
+// @connect      stat2-ans.ecnusole.com
+// @connect      mooc.s.ecust.edu.cn
+// @connect      webvpn.ahmu.edu.cn
+// @connect      127.0.0.1
+// @license      MIT
+// @compatible firefox
+// @compatible chrome
+// @compatible edge
+// @supportURL https://tk.tk.icu/
+// ==/UserScript==
+!!(function () {
+    const
+        //---------------------------------------------------------------------------
+        是否启用后台服务器 = '0',//改为1则启用后台服务器，请先学习使用方法：https://bbs.tampermonkey.net.cn/thread-5249-1-1.html
+        //Change 1/0 to enable background program,Please learn how to use it：https://bbs.tampermonkey.net.cn/thread-5249-1-1.html
+        服务器地址 = '127.0.0.1',//用于对接后台服务器，不懂不要修改
+        //Do not change this if you don't know how it works
+        端口 = '6503';         //后台服务器端口，不懂不要修改
+    //Do not change this if you don't know how it works
+    //---------------------------------------------------------------------------
+    // 音频文件的base64，是一段静音音频，在后台播放可以防止页面休眠
+    const audiofile = 'data:audio/ogg;base64,T2dnUwACAAAAAAAAAABwRPFFAAAAAGFtEqwBHgF2b3JiaXMAAAAAAUAfAAAAAAAAUHgAAAAAAACZAU9nZ1MAAAAAAAAAAAAAcETxRQEAAAA7J4IBDP8F////////////tQN2b3JiaXMvAAAAWGlwaC5PcmcgbGliVm9yYmlzIEkgMjAxNDAxMjIgKFR1cnBha8OkcsOkamlpbikGAAAAJQAAAEVOQ09ERVI9U291bmQgU3R1ZGlvLCBsaWJWb3JiaXMgMS4zLjEbAAAAQUxCVU0gQVJUSVNUPUFkdmVudHVyZSBMYW5kFAAAAEFMQlVNPUFkdmVudHVyZSBMYW5kIQAAAEVOQ09ESU5HIEFQUExJQ0FUSU9OPVNvdW5kIFN0dWRpbxUAAABBUlRJU1Q9QWR2ZW50dXJlIExhbmQjAAAAVElUTEU9RW1wdHkgTG9vcCBGb3IgSlMgUGVyZm9ybWFuY2UBBXZvcmJpcxJCQ1YBAAABAAxSFCElGVNKYwiVUlIpBR1jUFtHHWPUOUYhZBBTiEkZpXtPKpVYSsgRUlgpRR1TTFNJlVKWKUUdYxRTSCFT1jFloXMUS4ZJCSVsTa50FkvomWOWMUYdY85aSp1j1jFFHWNSUkmhcxg6ZiVkFDpGxehifDA6laJCKL7H3lLpLYWKW4q91xpT6y2EGEtpwQhhc+211dxKasUYY4wxxsXiUyiC0JBVAAABAABABAFCQ1YBAAoAAMJQDEVRgNCQVQBABgCAABRFcRTHcRxHkiTLAkJDVgEAQAAAAgAAKI7hKJIjSZJkWZZlWZameZaouaov+64u667t6roOhIasBADIAAAYhiGH3knMkFOQSSYpVcw5CKH1DjnlFGTSUsaYYoxRzpBTDDEFMYbQKYUQ1E45pQwiCENInWTOIEs96OBi5zgQGrIiAIgCAACMQYwhxpBzDEoGIXKOScggRM45KZ2UTEoorbSWSQktldYi55yUTkompbQWUsuklNZCKwUAAAQ4AAAEWAiFhqwIAKIAABCDkFJIKcSUYk4xh5RSjinHkFLMOcWYcowx6CBUzDHIHIRIKcUYc0455iBkDCrmHIQMMgEAAAEOAAABFkKhISsCgDgBAIMkaZqlaaJoaZooeqaoqqIoqqrleabpmaaqeqKpqqaquq6pqq5seZ5peqaoqp4pqqqpqq5rqqrriqpqy6ar2rbpqrbsyrJuu7Ks256qyrapurJuqq5tu7Js664s27rkearqmabreqbpuqrr2rLqurLtmabriqor26bryrLryratyrKua6bpuqKr2q6purLtyq5tu7Ks+6br6rbqyrquyrLu27au+7KtC7vourauyq6uq7Ks67It67Zs20LJ81TVM03X9UzTdVXXtW3VdW1bM03XNV1XlkXVdWXVlXVddWVb90zTdU1XlWXTVWVZlWXddmVXl0XXtW1Vln1ddWVfl23d92VZ133TdXVblWXbV2VZ92Vd94VZt33dU1VbN11X103X1X1b131htm3fF11X11XZ1oVVlnXf1n1lmHWdMLqurqu27OuqLOu+ruvGMOu6MKy6bfyurQvDq+vGseu+rty+j2rbvvDqtjG8um4cu7Abv+37xrGpqm2brqvrpivrumzrvm/runGMrqvrqiz7uurKvm/ruvDrvi8Mo+vquirLurDasq/Lui4Mu64bw2rbwu7aunDMsi4Mt+8rx68LQ9W2heHVdaOr28ZvC8PSN3a+AACAAQcAgAATykChISsCgDgBAAYhCBVjECrGIIQQUgohpFQxBiFjDkrGHJQQSkkhlNIqxiBkjknIHJMQSmiplNBKKKWlUEpLoZTWUmotptRaDKG0FEpprZTSWmopttRSbBVjEDLnpGSOSSiltFZKaSlzTErGoKQOQiqlpNJKSa1lzknJoKPSOUippNJSSam1UEproZTWSkqxpdJKba3FGkppLaTSWkmptdRSba21WiPGIGSMQcmck1JKSamU0lrmnJQOOiqZg5JKKamVklKsmJPSQSglg4xKSaW1kkoroZTWSkqxhVJaa63VmFJLNZSSWkmpxVBKa621GlMrNYVQUgultBZKaa21VmtqLbZQQmuhpBZLKjG1FmNtrcUYSmmtpBJbKanFFluNrbVYU0s1lpJibK3V2EotOdZaa0ot1tJSjK21mFtMucVYaw0ltBZKaa2U0lpKrcXWWq2hlNZKKrGVklpsrdXYWow1lNJiKSm1kEpsrbVYW2w1ppZibLHVWFKLMcZYc0u11ZRai621WEsrNcYYa2415VIAAMCAAwBAgAlloNCQlQBAFAAAYAxjjEFoFHLMOSmNUs45JyVzDkIIKWXOQQghpc45CKW01DkHoZSUQikppRRbKCWl1losAACgwAEAIMAGTYnFAQoNWQkARAEAIMYoxRiExiClGIPQGKMUYxAqpRhzDkKlFGPOQcgYc85BKRljzkEnJYQQQimlhBBCKKWUAgAAChwAAAJs0JRYHKDQkBUBQBQAAGAMYgwxhiB0UjopEYRMSielkRJaCylllkqKJcbMWomtxNhICa2F1jJrJcbSYkatxFhiKgAA7MABAOzAQig0ZCUAkAcAQBijFGPOOWcQYsw5CCE0CDHmHIQQKsaccw5CCBVjzjkHIYTOOecghBBC55xzEEIIoYMQQgillNJBCCGEUkrpIIQQQimldBBCCKGUUgoAACpwAAAIsFFkc4KRoEJDVgIAeQAAgDFKOSclpUYpxiCkFFujFGMQUmqtYgxCSq3FWDEGIaXWYuwgpNRajLV2EFJqLcZaQ0qtxVhrziGl1mKsNdfUWoy15tx7ai3GWnPOuQAA3AUHALADG0U2JxgJKjRkJQCQBwBAIKQUY4w5h5RijDHnnENKMcaYc84pxhhzzjnnFGOMOeecc4wx55xzzjnGmHPOOeecc84556CDkDnnnHPQQeicc845CCF0zjnnHIQQCgAAKnAAAAiwUWRzgpGgQkNWAgDhAACAMZRSSimllFJKqKOUUkoppZRSAiGllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimVUkoppZRSSimllFJKKaUAIN8KBwD/BxtnWEk6KxwNLjRkJQAQDgAAGMMYhIw5JyWlhjEIpXROSkklNYxBKKVzElJKKYPQWmqlpNJSShmElGILIZWUWgqltFZrKam1lFIoKcUaS0qppdYy5ySkklpLrbaYOQelpNZaaq3FEEJKsbXWUmuxdVJSSa211lptLaSUWmstxtZibCWlllprqcXWWkyptRZbSy3G1mJLrcXYYosxxhoLAOBucACASLBxhpWks8LR4EJDVgIAIQEABDJKOeecgxBCCCFSijHnoIMQQgghREox5pyDEEIIIYSMMecghBBCCKGUkDHmHIQQQgghhFI65yCEUEoJpZRSSucchBBCCKWUUkoJIYQQQiillFJKKSGEEEoppZRSSiklhBBCKKWUUkoppYQQQiillFJKKaWUEEIopZRSSimllBJC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'
+    // ----------
+    // 别看了，屎山
+    // ----------
+    let $qqgroup = '1051811266',
+        $w = unsafeWindow,
+        $l = $w.location.href,
+        $d = $w.document,
+        $version = GM_info.script.version.replaceAll('.', ''),
+        // 调用$s[value]可以获取url查询值
+        $s = Object.fromEntries(new URLSearchParams($w.location.search)),
+        $protocol = $w.location.protocol + "//",
+        getCookie = name => `; ${document.cookie}`.split(`; ${name}=`).pop().split(';').shift(),
+        $uid = getCookie('UID') || getCookie('_uid') || $s['uid'],
+        // 自己封装的仿layer弹窗，因为从外部调用js可能受网络影响
+        $layer = (info) => {
+            const body = $d.body;
+            const shadow = $d.createElement('div');
+            const alert = $d.createElement('div');
+            const alertHead = $d.createElement('div');
+            const alertBody = $d.createElement('div');
+            const buttons = $d.createElement('div');
+            const button = $d.createElement('span');
+            shadow.classList.add('shadow');
+            alert.classList.add('alert');
+            alertHead.classList.add('alertHead');
+            alertBody.classList.add('alertBody');
+            buttons.classList.add('buttons');
+            button.classList.add('button');
+            alertHead.innerHTML = '提示'
+            alertBody.innerHTML = info;
+            button.innerHTML = '确定';
+            button.addEventListener('click', () => {
+                shadow.remove();
+                alert.remove();
+            });
+            buttons.appendChild(button);
+            alert.appendChild(alertHead)
+            alert.appendChild(alertBody)
+            alert.appendChild(buttons)
+            body.appendChild(shadow);
+            body.appendChild(alert);
+        },
+        // 根据ascii排序数组元素
+        $ascii = (str) => {
+            return str.split('').sort((a, b) => a.charCodeAt(0) - b.charCodeAt(0)).join('');
+        },
+        // 生成随机32位字符串
+        randomString = (z = false) => {
+            let t = "abcdef1234567890",
+                result = ''
+            z && (t += "ghijklmnopqrstuvwxyz")
+            for (let i = 0; i < 32; i++) {
+                const randomIndex = Math.floor(Math.random() * t.length);
+                result += t[randomIndex];
+            }
+            return result
+        },
+        // 生成随机毫秒数，例如$(1,2)可能返回1500
+        $n = function (min, max) {
+            if (arguments.length == 1) {
+                max = min + 1;
+                if (min > 1) {
+                    min = min - 1
+                }
+            } else if (arguments.length == 0) {
+                min = 4;
+                max = 6;
+            }
+            return (Math.random() * (max - min) + min).toFixed(3) * 1000;
+        },
+        // sleep函数，使用await调用
+        sleep = (interval) => {
+            return new Promise((success, fail) => {
+                setTimeout(success, interval);
+            });
+        },
+        hostList = [
+            'https://tk.tk.icu/',
+            'https://tk.wanjuantiku.com/',
+            'https://scriptcat.cn/'
+        ],
+        host = '',
+        handleImgs = (s) => {
+            // 去除字符串中的style与script标签和其中的内容
+            s = s.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '').replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '')
+            let imgEs = s.match(/(<img([^>]*)>)/ig)
+            // 提取html中的图片
+            if (imgEs) {
+                for (let j = 0, k = imgEs.length; j < k; j++) {
+                    let div = $d.createElement('div')
+                    div.innerHTML = imgEs[j]
+                    if (div.children.length < 1) {
+                        continue
+                    }
+                    let src = div.children[0].getAttribute('src')
+                    src && (s = s.replace(imgEs[j], src.replace(/http[s]?:\/\//, '')));
+                }
+            }
+            // 提取iframe（音频内容），转化为纯文本链接
+            let iframeEs = s.match(/(<iframe([^>]*)>)/ig);
+            if (iframeEs) {
+                for (let j = 0, k = iframeEs.length; j < k; j++) {
+                    let div = $d.createElement('div')
+                    div.innerHTML = iframeEs[j]
+                    let src = div.children[0].getAttribute('_src') || div.children[0].getAttribute('src')
+                    src && (s = s.replace(iframeEs[j], src.replace(/http[s]?:\/\//, '')));
+                }
+            }
+            // 提取audio标签（旧版音频）
+            let div = $d.createElement('div')
+            div.innerHTML = s
+            let audioPlayers = div.querySelectorAll('.audioReader')
+            for (let audioPlayer of audioPlayers) {
+                let source = audioPlayer.querySelector('source')
+                let src = ''
+                if (source) {
+                    src = source.getAttribute('src')
+                    if (src) {
+                        src = src.replace(/http[s]?:\/\//, '')
+                    }
+                }
+                audioPlayer.innerHTML = src
+            }
+            s = div.innerHTML
+            return s
+        },
+        // 格式化字符串
+        beforeTrim = (s) => {
+            return handleImgs(s)
+                .replaceAll(/([\x00-\x1F\x7F]|\s){2,}/g, ' ')
+                .replaceAll(/<[^>]*>/g, '')
+                .replaceAll('javascript:void(0);', '')
+                .replaceAll(" ", '')
+                .replace(/^([\x00-\x1F\x7F]|\s)+/ig, '')
+                .replace(/([\x00-\x1F\x7F]|\s)+$/ig, '')
+                .replaceAll("&nbsp;", '')
+        },
+        trim = (s) => {
+            return handleImgs(s)
+                .replaceAll("-", '')
+                .replaceAll(/([\x00-\x1F\x7F]|\s){2,}/g, ' ')
+                .replaceAll(/<[^>]*>/g, '')
+                .replaceAll('javascript:void(0);', '')
+                .replaceAll("，", ",")
+                .replaceAll("。", ".")
+                .replaceAll("？", "?")
+                .replaceAll("！", "!")
+                .replaceAll("：", ":")
+                .replaceAll("；", ";")
+                .replaceAll("“", '"')
+                .replaceAll("”", '"')
+                .replaceAll("‘", "'")
+                .replaceAll("’", "'")
+                .replaceAll("（", "(")
+                .replaceAll("）", ")")
+                .replaceAll("【", "[")
+                .replaceAll("】", "]")
+                .replaceAll("、", ",")
+                .replaceAll("\"", '*')
+                .replaceAll("&nbsp;", '')
+                .replaceAll("'", '*')
+                .replaceAll("%", '*')
+                .replaceAll(" ", '')
+                .replace(/^([\x00-\x1F\x7F]|\s)+/ig, '')
+                .replace(/([\x00-\x1F\x7F]|\s)+$/ig, '');
+        },
+        isSameDomain = (url1, url2) => {
+            // 判断请求前后两个url是否为同域
+            if (url1.indexOf('http') !== 0) {
+                // 直接请求路径，说明与页面同域，替换为页面url
+                url1 = $l
+            }
+            try {
+                const currentUrl = new URL(url1);
+                const testUrl = new URL(url2);
+                // 比较主机名（hostname）是否相同
+                return currentUrl.hostname === testUrl.hostname;
+            } catch (error) {
+                return false;
+            }
+        },
+        request = (data) => {
+            let hosts = window.location.href.match(/https:\/\/webvpn\.(.*?)\/https\/[0-9a-z]+\//)
+            if (Array.isArray(hosts) && hosts.length > 0) {
+                try {
+                    if (data.headers && data.headers.Referer) {//修改referer为vpn
+                        try {
+                            const refererObj = new URL(data.headers.Referer)
+                            data.headers.Referer = hosts[0].slice(0, -1) + refererObj.pathname + refererObj.search + refererObj.hash
+                        } catch (e) {
+                            console.log(e)
+                        }
+                    }
+                    const urlObj = new URL(data.url)
+                    data.url = hosts[0].slice(0, -1) + urlObj.pathname + urlObj.search + urlObj.hash
+                } catch (e) {//data.url是个路径，不是完整url
+                    if (data.url.charAt(0) == '/') {
+                        data.url = hosts[0].slice(0, -1) + data.url
+                    } else {
+                        data.url = hosts[0] + data.url
+                    }
+                    console.log(e)
+                }
+                if (!data.url.includes('&enlink-vpn')) {
+                    data.url += '&enlink-vpn'
+                }
+            }//如果检测到校园网，自动重建请求到校园网节点
+            return new Promise((success, fail) => {
+                if (data.method == undefined) {
+                    data.method = 'GET';
+                }
+                data.method = data.method.toUpperCase()
+                if (data.timeout == undefined) {
+                    data.timeout = 10000;
+                }
+                if (!data.headers) {
+                    data.headers = {}
+                }
+                data.headers['Accept-Language'] = 'zh-CN,zh;q=0.9';
+                data.onload = function (res) {
+                    if (res.responseText.includes('<title>用户登录</title>')) {
+                        // 请求后跳转到登录页，说明cookie出现异常（此问题易出现在篡改猴5.2.0版本与同期部分篡改猴beta版）
+                        if (isSameDomain(data.url, $l)) {
+                            let method = data.method
+                            // 是否与页面同域，如果是就改用xhr
+                            const xhr = new XMLHttpRequest()
+                            xhr.open(method, data.url, true)
+                            xhr.onreadystatechange = function () {
+                                if (xhr.readyState === XMLHttpRequest.DONE) {
+                                    if (xhr.status >= 200 && xhr.status < 300) {
+                                        let res = {
+                                            responseText: xhr.responseText,
+                                            status: xhr.status
+                                        }
+                                        success(res)
+                                    } else {
+                                        success(false)
+                                    }
+                                }
+                            }
+                            xhr.onerror = function () {
+                                alert('登录状态失效，请重新登陆超星\n反馈群：' + $qqgroup);
+                                $w.location.href = $protocol + $w.location.host.replace(/mooc(.*?)\./ig, 'passport2.') + '/login?fid=&newversion=true&refer=' + encodeURIComponent($l)
+                            }
+                            xhr.timeout = data.timeout
+                            if (method === 'POST' && data.data) {
+                                if (data.headers) {
+                                    for (let i in data.headers) {
+                                        xhr.setRequestHeader(i, data.headers[i])
+                                    }
+                                }
+                                xhr.send(data.data)
+                            } else {
+                                xhr.send()
+                            }
+                        } else if (GM_info.scriptHandler == "Tampermonkey" && ['5.2.6195', '5.2.6196', '5.2.6197', '5.2.6198', '5.2.6199', '5.2.6200', '5.2.0'].includes(GM_info.version)) {
+                            if (confirm(`您正在使用的油猴插件版本为测试版：${GM_info.version}\n该版本存在未修复的问题，无法稳定的运行此脚本，请使用脚本猫\n点击确定前往脚本猫官网\n反馈群：` + $qqgroup)) {
+                                $w.location.href = 'https://scriptcat.org/zh-CN/'
+                            } else {
+                                success(false)
+                            }
+                        }
+                    } else {
+                        success(res)
+                    }
+                }
+                data.onerror = function (e) {
+                    const hosts = data.url.match(/^http(s)?:\/\/(.*?)\//)
+                    if (hosts && hosts.length > 0) {
+                        let host = hosts[0].replace(/^http(s)?:\/\//, '').replace('\/', '');
+                        if (typeof e == 'object' && e.error && e.error.includes('Refused to connect to')) {
+                            $w.logs.addLog('<br><font color="red">刚刚有一个跨域请求发送失败</font><br>👇请编辑脚本代码，将下方蓝色代码填入脚本指定空白中👇<br><h4><font color="blue">// @connect      ' + host + '</font></h4>👆请编辑脚本代码，将上面蓝色代码填入脚本指定空白中👆<br>别忘了保存并刷新页面哦');
+                            $w.wait = true;
+                        } else if (typeof e == 'string' && e.includes('permission')) {
+                            $w.logs.addLog('<br><font color="red">刚刚有一个跨域请求发送失败</font><br>👇请编辑脚本代码，将下方蓝色代码填入脚本指定空白中👇<br><h4><font color="blue">// @connect      ' + host + '</font></h4>👆请编辑脚本代码，将上面蓝色代码填入脚本指定空白中👆<br>别忘了保存并刷新页面哦');
+                            $w.wait = true;
+                        }
+                    }
+                    try { $w.logs.addLog('请求错误，请检查网络连接', 'red'); } catch (e) { }
+                    if (!$l.includes('chaoxing.com')) {
+                        let classId = $s['clazzid'] || $s['classid'] || $s['classId'] || $s['classId'],
+                            courseId = $s['courseid'] || $s['courseId'];
+                        if (confirm('检测到您使用的是学校定制学习通，可能会出现使用问题\n可以尝试切换到学习通官方页面（需要重新登陆），是否切换？')) {
+                            $w.location.href = 'http://passport2.chaoxing.com/login?refer=http%3A%2F%2Fmooc1.chaoxing.com%2Fvisit%2Fstucoursemiddle%3Fcourseid%3D' + courseId + '%26clazzid%3D' + classId + '%26vc%3D1%26ismooc2%3D1%26v%3D2%26r%3D1&newversion=true&_blank=0';
+                        }
+                    }
+                    console.log(e);
+                    success(false);
+                }
+                data.ontimeout = function () {
+                    success(false);
+                }
+                GM_xmlhttpRequest(data);
+            })
+        },
+        brequest = (data) => {
+            return new Promise((success, fail) => {
+                if (data.url.includes('?')) {
+                    data.url += '&'
+                } else {
+                    data.url += '?'
+                }
+                data.url += 'ran=' + String(Date.now())
+                if (!data.method) {
+                    data.method = 'get'
+                }
+                if (!data.timeout) {
+                    data.timeout = 1e4
+                }
+                data.ontimeout = data.onerror = function () {
+                    success(false)
+                }
+                data.onload = function (res) {
+                    try {
+                        success(JSON.parse(res.responseText));
+                    } catch (e) {
+                        console.log(e);
+                        success(false);
+                    }
+                }
+                GM_xmlhttpRequest(data);
+            })
+        },
+        tkLeft = (left, tkToken) => {
+            if (!Number.isInteger(left)) {
+                return
+            }
+            $w.left = left;
+            GM_setValue('tkLeft', left);
+            try { $d.querySelector('#ugyvciuu').value = left } catch (e) { }
+            try { $d.querySelector('#payButton').setAttribute("href", host + "?token=" + tkToken + "#2") } catch (e) { }
+            try { $d.querySelector('#bindQQ').setAttribute("href", host + "?token=" + tkToken + "#bind") } catch (e) { }
+            try { $d.querySelector("#payToken").setAttribute("href", host + "?token=" + tkToken + "#2") } catch (e) { }
+            try { $d.querySelector("#tokenLeft").value = left } catch (e) { }
+        },
+        ctk = (token) => {
+            let url = host + 'api/checkLeft?token=' + token
+            let left = 0
+            try {
+                brequest({ "url": url }).then(function (success) {
+                    try {
+                        left = success.data
+                        if (left == -1) {
+                            // 剩余次数为-1，说明可能token注册但从未登录，然后现在失效了，需要重新注册
+                            register(token)
+                            left = 0
+                        }
+                        tkLeft(left, token);
+                        if (success.hasInfo) {
+                            if (success.msg !== $w.lastLog) {//判断是否为重复提示，防止造成骚扰
+                                $w.lastLog = success.msg
+                                try {
+                                    $w.logs.addLog(success.msg, 'orange')
+                                } catch (e) {
+                                    console.log(e)
+                                }
+
+                            }
+                        }
+                    } catch (e) {
+                        console.log(e)
+                    }
+                })
+            } catch (e) {
+                console.log(e)
+            } finally {
+                return left
+            }
+        },
+        // 检查字符串是否为判断题答案
+        panDuan = str => {
+            const right = ['正确', '对', '是', 'T', '√', 'ri', 'true', 'A']
+            const wrong = ['错误', '错', '否', 'F', '×', 'wr', 'false', 'B']
+            let result = false
+            right.forEach(e => {
+                if (str.includes(e)) {
+                    result = 'r'
+                }
+            })
+            wrong.forEach(e => {
+                if (str.includes(e)) {
+                    result = 'w'
+                }
+            })
+            return result
+        },
+        // 检查脚本是否多开
+        checkDuoKai = () => {
+            if ($w.top !== $w) {
+                return false;
+            }
+            try {
+                // 在页面添加一个全局数组，如果数组元素数量>2，就是多开了
+                $w.checkConcurrency.push(6);
+            } catch {
+                $w.checkConcurrency = [6];
+            }
+            const scriptNum = $w.checkConcurrency.length
+            if (scriptNum > 1) {
+                alert(`【超星学习通九九助手】\n\n请勿多开此脚本，您开启了${scriptNum}个，请删除多余脚本\n\n请检查您是否同时安装了多个相同的脚本\n是否同时安装了多个脚本管理器：脚本猫、暴力猴、油猴等\n是否有脚本管理器插件被归档至扩展按钮中`);
+                return true;
+            }
+            return false;
+
+        },
+        // 使用textarea元素来去除html中奇奇怪怪的符号
+        decodeHtmlEntities = text => {
+            const textarea = $d.createElement('textarea');
+            textarea.innerHTML = text;
+            return textarea.value;
+        },
+        md5 = (str) => {
+            function hex_md5(s) {
+                return binl2hex(core_md5(str2binl(s), s.length * 8));
+            }
+            function core_md5(x, len) {
+                x[len >> 5] |= 0x80 << ((len) % 32);
+                x[(((len + 64) >>> 9) << 4) + 14] = len;
+                let a = 1732584193;
+                let b = -271733879;
+                let c = -1732584194;
+                let d = 271733878;
+                for (let i = 0; i < x.length; i += 16) {
+                    let olda = a;
+                    let oldb = b;
+                    let oldc = c;
+                    let oldd = d;
+                    a = md5_ff(a, b, c, d, x[i + 0], 7, -680876936);
+                    d = md5_ff(d, a, b, c, x[i + 1], 12, -389564586);
+                    c = md5_ff(c, d, a, b, x[i + 2], 17, 606105819);
+                    b = md5_ff(b, c, d, a, x[i + 3], 22, -1044525330);
+                    a = md5_ff(a, b, c, d, x[i + 4], 7, -176418897);
+                    d = md5_ff(d, a, b, c, x[i + 5], 12, 1200080426);
+                    c = md5_ff(c, d, a, b, x[i + 6], 17, -1473231341);
+                    b = md5_ff(b, c, d, a, x[i + 7], 22, -45705983);
+                    a = md5_ff(a, b, c, d, x[i + 8], 7, 1770035416);
+                    d = md5_ff(d, a, b, c, x[i + 9], 12, -1958414417);
+                    c = md5_ff(c, d, a, b, x[i + 10], 17, -42063);
+                    b = md5_ff(b, c, d, a, x[i + 11], 22, -1990404162);
+                    a = md5_ff(a, b, c, d, x[i + 12], 7, 1804603682);
+                    d = md5_ff(d, a, b, c, x[i + 13], 12, -40341101);
+                    c = md5_ff(c, d, a, b, x[i + 14], 17, -1502002290);
+                    b = md5_ff(b, c, d, a, x[i + 15], 22, 1236535329);
+                    a = md5_gg(a, b, c, d, x[i + 1], 5, -165796510);
+                    d = md5_gg(d, a, b, c, x[i + 6], 9, -1069501632);
+                    c = md5_gg(c, d, a, b, x[i + 11], 14, 643717713);
+                    b = md5_gg(b, c, d, a, x[i + 0], 20, -373897302);
+                    a = md5_gg(a, b, c, d, x[i + 5], 5, -701558691);
+                    d = md5_gg(d, a, b, c, x[i + 10], 9, 38016083);
+                    c = md5_gg(c, d, a, b, x[i + 15], 14, -660478335);
+                    b = md5_gg(b, c, d, a, x[i + 4], 20, -405537848);
+                    a = md5_gg(a, b, c, d, x[i + 9], 5, 568446438);
+                    d = md5_gg(d, a, b, c, x[i + 14], 9, -1019803690);
+                    c = md5_gg(c, d, a, b, x[i + 3], 14, -187363961);
+                    b = md5_gg(b, c, d, a, x[i + 8], 20, 1163531501);
+                    a = md5_gg(a, b, c, d, x[i + 13], 5, -1444681467);
+                    d = md5_gg(d, a, b, c, x[i + 2], 9, -51403784);
+                    c = md5_gg(c, d, a, b, x[i + 7], 14, 1735328473);
+                    b = md5_gg(b, c, d, a, x[i + 12], 20, -1926607734);
+                    a = md5_hh(a, b, c, d, x[i + 5], 4, -378558);
+                    d = md5_hh(d, a, b, c, x[i + 8], 11, -2022574463);
+                    c = md5_hh(c, d, a, b, x[i + 11], 16, 1839030562);
+                    b = md5_hh(b, c, d, a, x[i + 14], 23, -35309556);
+                    a = md5_hh(a, b, c, d, x[i + 1], 4, -1530992060);
+                    d = md5_hh(d, a, b, c, x[i + 4], 11, 1272893353);
+                    c = md5_hh(c, d, a, b, x[i + 7], 16, -155497632);
+                    b = md5_hh(b, c, d, a, x[i + 10], 23, -1094730640);
+                    a = md5_hh(a, b, c, d, x[i + 13], 4, 681279174);
+                    d = md5_hh(d, a, b, c, x[i + 0], 11, -358537222);
+                    c = md5_hh(c, d, a, b, x[i + 3], 16, -722521979);
+                    b = md5_hh(b, c, d, a, x[i + 6], 23, 76029189);
+                    a = md5_hh(a, b, c, d, x[i + 9], 4, -640364487);
+                    d = md5_hh(d, a, b, c, x[i + 12], 11, -421815835);
+                    c = md5_hh(c, d, a, b, x[i + 15], 16, 530742520);
+                    b = md5_hh(b, c, d, a, x[i + 2], 23, -995338651);
+                    a = md5_ii(a, b, c, d, x[i + 0], 6, -198630844);
+                    d = md5_ii(d, a, b, c, x[i + 7], 10, 1126891415);
+                    c = md5_ii(c, d, a, b, x[i + 14], 15, -1416354905);
+                    b = md5_ii(b, c, d, a, x[i + 5], 21, -57434055);
+                    a = md5_ii(a, b, c, d, x[i + 12], 6, 1700485571);
+                    d = md5_ii(d, a, b, c, x[i + 3], 10, -1894986606);
+                    c = md5_ii(c, d, a, b, x[i + 10], 15, -1051523);
+                    b = md5_ii(b, c, d, a, x[i + 1], 21, -2054922799);
+                    a = md5_ii(a, b, c, d, x[i + 8], 6, 1873313359);
+                    d = md5_ii(d, a, b, c, x[i + 15], 10, -30611744);
+                    c = md5_ii(c, d, a, b, x[i + 6], 15, -1560198380);
+                    b = md5_ii(b, c, d, a, x[i + 13], 21, 1309151649);
+                    a = md5_ii(a, b, c, d, x[i + 4], 6, -145523070);
+                    d = md5_ii(d, a, b, c, x[i + 11], 10, -1120210379);
+                    c = md5_ii(c, d, a, b, x[i + 2], 15, 718787259);
+                    b = md5_ii(b, c, d, a, x[i + 9], 21, -343485551);
+                    a = safe_add(a, olda);
+                    b = safe_add(b, oldb);
+                    c = safe_add(c, oldc);
+                    d = safe_add(d, oldd);
+                }
+                return Array(a, b, c, d);
+            }
+            function md5_cmn(q, a, b, x, s, t) {
+                return safe_add(bit_rol(safe_add(safe_add(a, q), safe_add(x, t)), s), b);
+            }
+            function md5_ff(a, b, c, d, x, s, t) {
+                return md5_cmn((b & c) | ((~b) & d), a, b, x, s, t);
+            }
+            function md5_gg(a, b, c, d, x, s, t) {
+                return md5_cmn((b & d) | (c & (~d)), a, b, x, s, t);
+            }
+            function md5_hh(a, b, c, d, x, s, t) {
+                return md5_cmn(b ^ c ^ d, a, b, x, s, t);
+            }
+            function md5_ii(a, b, c, d, x, s, t) {
+                return md5_cmn(c ^ (b | (~d)), a, b, x, s, t);
+            }
+            function safe_add(x, y) {
+                let lsw = (x & 0xFFFF) + (y & 0xFFFF);
+                let msw = (x >> 16) + (y >> 16) + (lsw >> 16);
+                return (msw << 16) | (lsw & 0xFFFF);
+            }
+            function bit_rol(num, cnt) {
+                return (num << cnt) | (num >>> (32 - cnt));
+            }
+            function str2binl(str) {
+                let bin = Array();
+                for (let i = 0; i < str.length * 8; i += 8)
+                    bin[i >> 5] |= (str.charCodeAt(i / 8) & 255) << (i % 32);
+                return bin;
+            }
+            function binl2hex(binarray) {
+                let hex_tab = "0123456789abcdef";
+                let str = "";
+                for (let i = 0; i < binarray.length * 4; i++) {
+                    str += hex_tab.charAt((binarray[i >> 2] >> ((i % 4) * 8 + 4)) & 0xF) +
+                        hex_tab.charAt((binarray[i >> 2] >> ((i % 4) * 8)) & 0xF);
+                }
+                return str;
+            }
+            return hex_md5(str)
+        },
+        getTkToken = () => {
+            //尝试从脚本存储中获取token，如果无法获取，就从页面缓存中获取，并且同步
+            let token = GM_getValue('shenchanranToken', false) || $w.localStorage.getItem("shenchanranToken")
+            if (token) {
+                GM_setValue('shenchanranToken', token)
+                $w.localStorage.removeItem('shenchanranToken')
+            }
+            return token
+        },
+        register = (tempToken) => {
+            return brequest({
+                url: host + 'api/register',
+                method: 'put',
+                data: JSON.stringify(
+                    {
+                        'token': tempToken,
+                        'md5': md5(tempToken)
+                    }
+                ),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+        },
+        tokenGetter = () => {
+            return new Promise((s, f) => {
+                GM_setValue('waitForLogin', false)
+                const style = document.createElement('style')
+                style.textContent = `
+                    .modal-overlay {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        background-color: rgba(0, 0, 0, 0.5);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        z-index: 1000;
+                    }
+                    .modal-content {
+                        font-size:16px;
+                        background-color: white;
+                        padding: 20px;
+                        border-radius: 8px;
+                        text-align: center;
+                        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                        max-width: 300px;
+                        width: 100%;
+                    }
+                    .modal-content .modal-title {
+                        font-size:30px;
+                    }
+                    .modal-buttons {
+                        margin-top: 20px;
+                    }
+                    .modal-buttons button {
+                        margin-top: 10px;
+                        padding: 10px 20px;
+                        border: none;
+                        border-radius: 4px;
+                        cursor: pointer;
+                    }
+                    .modal-buttons button {
+                        background-color: #4CAF50;
+                        color: white;
+                    }
+                        .modal-buttons button:last-child {
+                        background-color:rgb(175, 76, 76);
+                        color: white;
+                    }`;
+                $d.head.appendChild(style)
+                // 创建弹窗的 HTML 结构
+                const modal = document.createElement('div')
+                modal.className = 'modal-overlay'
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <div class="modal-title">超星学习通九九助手</div>
+                        <p>您可能是第一次使用此脚本，此脚本答题需要连接题库，请选择您登陆题库的方式</p>
+                        <div class="modal-buttons">
+                            <button id="weChatBinddddd">微信登录(赠送100次)</button>
+                            <button id="randomGGG">随机生成Token</button>
+                            <button id="manualalala">手动填写Token</button>
+                            <button id="cancaal">取消</button>
+                        </div>
+                    </div>
+                `;
+                $d.body.appendChild(modal)
+                const weChatBtn = modal.querySelector('#weChatBinddddd')
+                const randomBtn = modal.querySelector('#randomGGG')
+                const manualBtn = modal.querySelector('#manualalala')
+                const canalBtn = modal.querySelector('#cancaal')
+                let weChatWait = false
+                const reg = /^[0-9a-z]{32}$/ig
+                weChatBtn.addEventListener('click', () => {
+                    if (weChatWait) {
+                        return
+                    }
+                    weChatWait = true
+                    weChatBtn.innerHTML = '请求中'
+                    GM_setValue('waitForLogin', true)
+                    GM_xmlhttpRequest({
+                        url: host + 'ajax/wx_login.php',
+                        method: 'GET',
+                        timeout: 5000,
+                        onabort() {
+                            weChatWait = false
+                            weChatBtn.innerHTML = '微信登录(请重试)'
+                        },
+                        onerror() {
+                            weChatWait = false
+                            weChatBtn.innerHTML = '微信登录(请重试)'
+                        },
+                        ontimeout() {
+                            weChatWait = false
+                            weChatBtn.innerHTML = '微信登录(请重试)'
+                        },
+                        onload(res) {
+                            weChatWait = false
+                            try {
+                                let result = JSON.parse(res.responseText)
+                                if (result.code == 1) {
+                                    window.open(result.data)
+                                    let r = setInterval(() => {
+                                        let token = GM_getValue('waitForLogin', false)
+                                        if (token && reg.test(token)) {
+                                            clearTimeout(r)
+                                            modal.style.display = 'none'
+                                            s([false, token])
+                                        }
+                                    }, 200)
+                                } else {
+                                    alert(result.msg)
+                                    weChatBtn.innerHTML = '微信登录(请重试)'
+                                }
+                            } catch (e) {
+                                console.log(e)
+                                weChatBtn.innerHTML = '微信登录(请重试)'
+                            }
+                        }
+                    })
+                })
+                randomBtn.addEventListener('click', () => {
+                    modal.style.display = 'none';
+                    let token = randomString(true)
+                    s([true, token])
+                })
+                manualBtn.addEventListener('click', () => {
+                    let info = '请输入您的token'
+                    while (true) {
+                        let token = prompt(info)
+                        if (reg.test(token)) {
+                            modal.style.display = 'none';
+                            s([false, token])
+                            break
+                        } else if (token === false || token === null) {
+                            return
+                        } else {
+                            info = 'Token格式不符，请重新输入或者取消'
+                        }
+                    }
+                })
+                canalBtn.addEventListener('click', () => {
+                    modal.style.display = 'none';
+                })
+            })
+        }
+    hostCheck = () => {
+        return new Promise((success, fail) => {
+            async function r(i, success) {
+                if (i >= hostList.length) {
+                    let z = confirm('【超星学习通九九助手】\n所有服务器均不可用，请稍后刷新重试或尝试更换网络\n请不要使用翻墙软件\n如果仍无法使用，请点击“取消”按钮自动前往更新脚本\nQQ反馈群：' + $qqgroup);
+                    if (!z) {
+                        $w.top.location.href = 'http://f12.cx'
+                    }
+                    fail()
+                    return
+                }
+                await brequest({ "url": hostList[i] + 'api/status?version=' + $version, timeout: 3e3 }).then((checkResult) => {
+                    if (!checkResult) {
+                        i++
+                        r(i, success)
+                    } else if (checkResult.status == 't') {
+                        host = hostList[i]
+                        s(success)
+                    } else if (checkResult.status == 'f') {
+                        alert('【超星学习通九九助手】服务器暂停服务，请耐心等待恢复\n' + checkResult.info);
+                        fail()
+                    } else if (checkResult.status == 'u') {
+                        let l = confirm('【超星学习通九九助手】当前脚本有新版本，点击确定前往更新\n交流群：' + $qqgroup);
+                        if (l) {
+                            $w.top.location.href = checkResult.url
+                            fail()
+                            return
+                        }
+                        host = hostList[i]
+                        s(success)
+                    }
+                })
+            }
+            let sTryTime = 0
+            async function s(success) {
+                sTryTime += 1
+                if (sTryTime > 4) {
+                    alert('【超星学习通九九助手】token注册失败，请刷新页面重试\nQQ反馈群:' + $qqgroup)
+                    fail()
+                }
+                let token = getTkToken(),
+                    reg = /^[0-9a-z]{32}$/ig;
+                //如果获取了旧版token或者哪里都无法获取，就重新生成一个
+                if (['66666666666666666666666666666666', '', null, undefined, false].includes(token) || !reg.test(token)) {
+                    // let tempToken = randomString(true)
+                    let tempTokens = await tokenGetter()
+                    let tempToken = tempTokens[1]
+                    if (tempTokens[0]) {//为true代表随机生成，需要注册后使用
+                        register(tempToken).then((result) => {
+                            if (!result || result.code != 1) {
+                                setTimeout(() => {
+                                    s(success)
+                                }, 500)
+                            }
+                            token = tempToken
+                            $w.localStorage.removeItem('shenchanranToken')
+                            GM_setValue('shenchanranToken', token)
+                            success()
+                        })
+                    } else {
+                        token = tempToken
+                        $w.localStorage.removeItem('shenchanranToken')
+                        GM_setValue('shenchanranToken', token)
+                        success()
+                    }
+                } else {
+                    success()
+                }
+            }
+            r(0, success)
+        })
+    }
+    // 监听此页面，判断用户是否需要刷学习次数，如果需要，就点进章节
+    if ($l.includes('mycourse/studentcourse?')) {
+        let i = setInterval(() => {
+            if (GM_getValue("doxxcs", false)) {
+                clearInterval(i)
+                const lis = [...$d.querySelectorAll(".chapter_item"), ...$d.querySelectorAll("h3")]
+                for (e of lis) {
+                    if (e.innerHTML.includes("chapterId") || (e.getAttribute("onclick") && e.getAttribute("onclick").includes("toOld"))) {
+                        e.click()
+                        e.querySelector("a").click()
+                        return
+                    }
+                }
+            }
+        }, 500)
+    }
+    else if ($l.includes('/user/')) {
+        for (let h of hostList) {
+            if ($l.includes(h)) {
+                if (GM_getValue('waitForLogin', false) === true) {
+                    let token = getCookie('Token')
+                    if (token) {
+                        GM_setValue('waitForLogin', token)
+                        alert('题库登陆成功，请回到刷课页面')
+                    }
+                }
+            }
+        }
+    }
+    // 刷章节次数页面
+    else if ($l.includes('mycourse/studentstudy?') && GM_getValue('doxxcs', false)) {
+        GM_setValue('doxxcs', false)
+        const body = $d.querySelector("body")
+        const div = $d.createElement('div')
+        div.setAttribute("id", "skpannel")
+        div.innerHTML = `<div id="skpannel">
+        <div id="skshadow" style="
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: -20px;
+        left: 0;
+        width: 100%;
+        height: 110%;
+        background-color: rgba(16,26,41,0.76);
+        z-index: 9998;
+        ">
+        </div>
+        <div id="skpannel" style="
+    font-size: 20px;
+        position: absolute;
+        top: 50vh;
+        left: 50vw;
+        transform: translate(-50%,-50%);
+        width: 650px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 1px 1px 50px rgba(0,0,0,.3);
+        overflow: hidden;
+        padding: 15px 30px;
+        z-index: 9999;
+            ">
+            <div style="
+        font-size: 26px;
+        width: 100%;
+        font-weight: 500;
+        ">超星学习通九九助手</div>
+            <div style="display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        ">
+                <span>
+                    <div style="margin: 20px 0 10px;">正在刷学习次数，如需停止请刷新页面</div>
+                </span>
+                
+            </div>
+            <div style="font-size: 16px;text-align: center;">已刷<span id="ciuu">1</span>次</div>
+            <div style="font-size: 16px;text-align: center;">学习次数不是实时更新，请不要同时运行其他脚本，否则刷次数会失败</div>
+            <span style="font-xize:14px; cursor: pointer; color: #68A4FF;  line-height: 20px; height: 20px;border: 1px solid #68A4FF;display: inline-block ;border-radius: 10px;">点我一下，然后你就不用一直盯着这个页面了</span>
+        </div>
+    </div>`
+        let d
+        const a = () => {
+            // 随机点击任意章节，学习次数+1
+            const s = [...$d.querySelectorAll('.posCatalog_name'), ...$d.querySelectorAll('a')]
+            s.sort((a, b) => {
+                // 打乱数组顺序
+                return Math.random() - 0.5
+            })
+            for (let z of s) {
+                let onclick = z.getAttribute("onclick") || z.getAttribute("href")
+                if (onclick && onclick.includes('getTeacherAjax') && onclick != lastOnclick) {
+                    lastOnclick = onclick
+                    z.click()
+                    d.innerHTML = +d.innerHTML + 1
+                    break
+                }
+            }
+        }
+        let lastOnclick = null
+        setTimeout(e => {
+            body.appendChild(div)
+            d = $d.querySelector('#ciuu')
+            setInterval(() => {
+                a()
+            }, $n(10, 20))
+            const audioPlayer = new Audio(audiofile)
+            audioPlayer.loop = true
+            $d.addEventListener('visibilitychange', function () {
+                // 播放静音音频，防止页面休眠
+                var c = 0;
+                if ($d.hidden) {
+                    audioPlayer.play();
+                    var timer = setInterval(function () {
+                        if (c) {
+                            $d.title = '🙈刷次数中';
+                            c = 0;
+                        } else {
+                            $d.title = '🙉刷次数中';
+                            c = 1;
+                        }
+                        if (!$d.hidden) {
+                            clearInterval(timer);
+                            $d.title = '学生学习页面';
+                        }
+                    }, 1300);
+                } else {
+                    audioPlayer.pause();
+                }
+            })
+        }, 1000)
+    }
+    // 章节主页，在此页面显示导航弹窗
+    if ($l.includes('/mycourse/stu?') || ($l.includes('mycourse/studentcourse?') && $w.top == $w)) {
+        if (checkDuoKai()) {
+            return;
+        }
+        let newVersion = true
+        if ($l.includes('mycourse/studentcourse?')) {
+            if (GM_getValue('directToWork', false)) {
+                GM_setValue('directToWork', false)
+                $d.querySelector('.workTip').previousSibling.click()
+                return
+            }
+            newVersion = false
+        } else {
+            setTimeout(() => {
+                let hosts = window.location.href.match(/https:\/\/webvpn\.(.*?)\/https\/[0-9a-z]+\//)
+                if (Array.isArray(hosts) && hosts.length > 0) {
+                    $w.backToOld()
+                }
+            }, 1000)//如果检测到校园网，自动切换到旧版页面（新版没法用）
+            setTimeout(e => {
+                const pagehead = $d.querySelector('.headRight')
+                if (!pagehead.innerHTML.includes('回到旧版')) {
+                    let a = $d.createElement('a')
+                    a.setAttribute('href', 'javascript:;')
+                    a.setAttribute('class', "backOld fl")
+                    a.setAttribute('onclick', "backToOld()")
+                    a.innerHTML = "回到旧版"
+                    pagehead.prepend(a)
+                }
+            }, 2000)
+        }
+        const body = $d.querySelector("body")
+        const div = $d.createElement('div')
+        const entrance = (host) => {
+            let hosts = window.location.href.match(/https:\/\/webvpn\.(.*?)\/https\/[0-9a-z]+\//)
+            if (Array.isArray(hosts) && hosts.length > 0) {
+                host = hosts[0].slice(0, -1)
+            }//如果检测到校园网，自动替换host为校园网节点
+            let classId = $s['clazzid'] || $s['classid'] || $s['classId'] || $s['classId'],
+                courseId = $s['courseid'] || $s['courseId'],
+                cpi = $s['cpi'] || '',
+                courseName = $d.title.replace('-首页', '')
+            $w.location.href = host + `/mooc-ans/course/999999999${$version}.html?ut=s&classid=` + classId + '&courseid=' + courseId + '&cpi=' + cpi + '&coursename=' + courseName + '&uid=' + $uid
+        }
+        div.setAttribute("id", "skpannel")
+        if (/Android/i.test(navigator.userAgent) && !/Edg/i.test(navigator.userAgent)) {
+            let a = confirm('【超星学习通九九助手】\n\n您可能正在使用手机浏览器\n我们不保证脚本能正常运行\n也不保证学习成绩\n建议使用edge手机端浏览器\n点击确定查看详细教程、点击取消关闭此窗口')
+            if (a) {
+                $w.location.href = 'https://greasyfork.cn/post/3'
+            }
+        } else if (/EdgA/i.test(navigator.userAgent)) {
+            alert('【超星学习通九九助手】\n\n您可能正在使用edge手机浏览器\n我们不保证脚本能在后台正常挂机\n不同手机的后台策略不同，可能在您回到桌面后会自动暂停\n如遇问题请刷新页面或更换为电脑浏览器')
+        }
+        div.innerHTML = `<div id="skshadow" style="
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: -20px;
+        left: 0;
+        width: 100%;
+        height: 110%;
+        background-color: rgba(16,26,41,0.76);
+        z-index: 9998;
+        ">
+        </div>
+        <div id="skpannel" style="
+    font-size: 20px;
+        position: absolute;
+        top: 50vh;
+        left: 50vw;
+        transform: translate(-50%,-50%);
+        width: 650px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 1px 1px 50px rgba(0,0,0,.3);
+        overflow: hidden;
+        padding: 15px 30px;
+        z-index: 9999;
+            ">
+    
+            <div style="
+        font-size: 26px;
+        width: 100%;
+        font-weight: 500;
+        ">超星学习通九九助手</div>
+            <div style="display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+        ">
+                <span>
+                    <div style="margin: 20px 0 10px;">题库Token</div>
+                    <span style="display: flex;">
+                        <input id="token"
+                            style="color: #495057; outline: none; font-size:18px;width:  250px;height: 40px;border-radius: 10px;padding: 0 10px;border: 1px solid #68A4FF;"
+                            type="text">
+                        <span
+                            style="cursor: pointer; color: #68A4FF; padding: 0 10px; line-height: 38px; height: 38px;margin-left: 10px; border: 1px solid #68A4FF;display: inline-block ;border-radius: 10px;" id="saveToken">保存</span>
+                    </span>
+    
+                </span>
+                <span>
+                    <div style="margin: 20px 0 10px;">剩余次数</div>
+                    <span style="display: flex;">
+                        <input id="tokenLeft" disabled="disabled" value="6666"
+                            style="color: #495057; outline: none; font-size:18px;width:  80px;height: 40px;border-radius: 10px;padding: 0 10px;border: 1px solid #68A4FF;"
+                            type="text">
+                        <a target="_blank" style="cursor: pointer; color: #68A4FF; padding: 0 10px; line-height: 38px; height: 38px;margin-left: 10px; border: 1px solid #68A4FF;display: inline-block ;border-radius: 10px;" id="payToken">充值</a>
+                        <span style="
+                    font-size: 14px;
+                    color: #1E9FFF;
+                    cursor: pointer;
+                    display: inline-block;
+                    line-height: 38px;
+                    margin-left: 10px;" id="tokenTip">刷新次数</span>
+                    </span>
+                </span>
+            </div>
+            <div id="tokentip" style="display: none; font-size: 14px; border-top: 1px solid black;border-bottom: 1px solid black;">
+                
+            </div>
+            <div style="font-size: 16px;text-align: center;">脚本官网：<a href="https://f12.cx" target="_blank">f12.cx</a>&ensp;&ensp;QQ交流群：${$qqgroup}</div>
+            <div id="updateinfo" style="font-size: 16px;text-align: center;color: red;display: none;">脚本有新版本，<a href="https://scriptcat.org/zh-CN/script-show-page/1127" target="_blank">点我前往更新</a></div>
+            <div style="font-size: 16px;text-align: center;">该课程支持刷课，请选择您要刷的内容</div>
+            <div style="margin-top: 20px;display: flex;justify-content: center;margin-bottom: 10px;">
+                <span
+                    style="cursor: pointer; background-color: #68A4FF; color: white; padding: 2px 15px; line-height: 38px; height: 38px;margin-left: 10px; border: 1px solid #68A4FF;display: inline-block ;border-radius: 23px;margin-right: 10px;"
+                    id="dosk">刷章节</span>
+                <span
+                    style="cursor: pointer; background-color: #68A4FF; color: white; padding: 2px 15px; line-height: 38px; height: 38px;margin-left: 10px; border: 1px solid #68A4FF;display: inline-block ;border-radius: 23px;margin-right: 10px;"
+                    id="doHomework">刷作业</span>
+                <span
+                    style="cursor: pointer; background-color: #68A4FF; color: white; padding: 2px 15px; line-height: 38px; height: 38px;margin-left: 10px; border: 1px solid #68A4FF;display: inline-block ;border-radius: 23px;margin-right: 10px;"
+                    id="doExam">刷考试</span>
+                <span
+                    style="cursor: pointer; background-color: #68A4FF; color: white; padding: 2px 15px; line-height: 38px; height: 38px;margin-left: 10px; border: 1px solid #68A4FF;display: inline-block ;border-radius: 23px;"
+                    id="doxxcs">刷学习次数</span>
+                <span
+                    style="cursor: pointer; background-color: #68A4FF; color: white; padding: 2px 15px; line-height: 38px; height: 38px;margin-left: 10px; border: 1px solid #68A4FF;display: inline-block ;border-radius: 23px;"
+                    id="canclesk">取消</span>
+            </div>
+        </div>`
+        hostCheck().then(() => {
+            setTimeout(() => {
+                const tempUIdElement = $d.querySelector("input[name='userId']") || $d.querySelector("input[id='uploadUid']")
+                if (tempUIdElement && !$uid) $uid = tempUIdElement.value
+                body.appendChild(div)
+                const warning = $d.querySelector('.warn-txt') || $d.querySelector('.continue-study')
+                const warns = ["已開啟結課", "本课程已结课", "已开启结课"]
+                let jkdata = GM_getValue('jkdata', {})
+                let classId = $s['clazzid'] || $s['classid'] || $s['classId'] || $s['classId']
+                let jk = false
+                if (warning) {
+                    warns.forEach(e => {
+                        if (warning.innerHTML.includes(e)) {
+                            jk = true
+                            jkdata[classId] = true
+                            GM_setValue('jkdata', jkdata)
+                        }
+                    })
+                }
+                if (!jk && jkdata[classId]) {
+                    jkdata[classId] = false
+                    GM_setValue('jkdata', jkdata)
+                }
+                ctk(getTkToken())
+            }, 800)
+            setTimeout(() => {
+                try {
+                    GM_xmlhttpRequest({
+                        url: 'https://scriptcat.org/scripts/code/1127/%E8%B6%85%E6%98%9F%E5%AD%A6%E4%B9%A0%E9%80%9A%E4%B9%9D%E4%B9%9D%E5%8A%A9%E6%89%8B%5BAI%E7%AD%94%E9%A2%98%5D%5B%E4%B8%80%E9%94%AE%E5%90%AF%E5%8A%A8%5D%5B%E6%9C%80%E5%B0%8F%E5%8C%96%E8%BF%90%E8%A1%8C%5D.user.js',
+                        headers: {
+                            'dnt': '1',
+                            'referer': 'https://scriptcat.org/zh-CN/script-show-page/1127',
+                            'sec-ch-ua': '"Chromium";v="142", "Microsoft Edge";v="142", "Not_A Brand";v="99"',
+                            'sec-ch-ua-arch': '"x86"',
+                            'sec-ch-ua-bitness': '"64"',
+                            'sec-ch-ua-full-version': '"142.0.3595.65"',
+                            'sec-ch-ua-full-version-list': '"Chromium";v="142.0.7444.135", "Microsoft Edge";v="142.0.3595.65", "Not_A Brand";v="99.0.0.0"',
+                            'sec-ch-ua-mobile': '?0',
+                            'sec-ch-ua-model': '""',
+                            'sec-ch-ua-platform': '"Windows"',
+                            'sec-ch-ua-platform-version': '"10.0.0"',
+                            'upgrade-insecure-requests': '1'
+                        },
+                        method: 'GET',
+                        timeout: 5000,
+                        onload(res) {
+                            try {
+                                let result = res.responseText.match(/\/\/\s*@version\s*(\d{1}\.\d{1}\.\d{1})+\s+/)
+                                if (result[1] != GM_info.script.version) {
+                                    div.querySelector('#updateinfo').style.display = 'block'
+                                }
+                            } catch (e) {
+                            }
+                        }
+                    })
+                } catch (e) { }
+                let tkToken = getTkToken()
+                $d.querySelector("#token").value = tkToken
+                const pannel = $d.querySelector('#skpannel')
+                const tokentip = $d.querySelector('#tokentip')
+                $d.querySelector('#dosk').addEventListener('click', () => {
+                    pannel.style.display = 'none';
+                    if (newVersion) entrance($w.ServerHost.mooc1Domain.replace('https://', 'http://'))
+                    else entrance("http://" + $w.location.host)
+
+                })
+                $d.querySelector('#doHomework').addEventListener('click', () => {
+                    pannel.style.display = 'none';
+                    if (newVersion) $d.querySelector('.zy').click()
+                    else $d.querySelector('.workTip').previousSibling.click()
+                })
+                $d.querySelector('#doExam').addEventListener('click', () => {
+                    pannel.style.display = 'none';
+                    if (newVersion) $d.querySelector('.ks').click()
+                    else $d.querySelector('.testTip').previousSibling.click()
+                })
+                $d.querySelector('#canclesk').addEventListener('click', () => {
+                    pannel.style.display = 'none';
+                })
+                let awfawf = 0
+                $d.querySelector('#tokenTip').addEventListener('click', () => {
+                    let now = Math.round(new Date() / 1000)
+                    if (now - awfawf > 10) {
+                        awfawf = now
+                        ctk(tkToken)
+                    } else {
+                        tokentip.innerHTML = `
+                        <p style="text-indent: 2em;">如果答题次数有问题，可能是您正在使用的token不是正确token</p>
+                        <p style="text-indent: 2em;">更换设备、浏览器或者清空浏览器数据会导致token丢失，脚本会自动为您生成一个新Token。</p>
+                        <p style="text-indent: 2em;">如果想找回之前的Token，请查看您的微信或支付宝付款记录，在商品名中有充值过的Token。</p>
+                        <p style="text-indent: 2em;">如果您之前的Token绑定过QQ或微信，请直接访问<a href="http://tk.tk.icu/" style="color:blue;" target="_blank">题库官网</a>并使用绑定的账号登录，即可找回原Token。</p>
+                        <p style="text-indent: 2em;">找回Token后请将Token复制到当前页面的Token输入框，然后点击保存按钮。</p>
+                        <p style="text-indent: 2em;color:green;">为新Token绑定微信可以获得免费的100答题次数</p>
+                        `
+                        tokentip.style.display = 'block'
+                    }
+                })
+                $d.querySelector('#saveToken').addEventListener('click', () => {
+                    let stkToken = $d.querySelector('#token').value,
+                        reg = /^[0-9a-z]{32}$/ig
+                    if (!reg.test(stkToken)) {
+                        tokentip.innerHTML = `<p style="color:red;text-align:center;">token格式错误</p>`
+                        tokentip.style.display = 'block'
+                        setTimeout(e => {
+                            tokentip.style.display = 'none'
+                        }, 2000)
+                        $d.querySelector("#token").value = tkToken
+                        return
+                    }
+                    if (tkToken == stkToken) {
+                        tokentip.innerHTML = `<p style="color:red;text-align:center;">请在token输入框填写新token</p>`
+                        tokentip.style.display = 'block'
+                        setTimeout(e => {
+                            tokentip.style.display = 'none'
+                        }, 5000)
+                        return
+                    }
+                    tkToken = stkToken
+                    $w.localStorage.removeItem('shenchanranToken')
+                    GM_setValue('shenchanranToken', tkToken);
+                    tokentip.innerHTML = `<p style="color:green;text-align:center;">保存成功</p>`
+                    tokentip.style.display = 'block'
+                    setTimeout(e => {
+                        tokentip.style.display = 'none'
+                    }, 2000)
+                    ctk(tkToken)
+                })
+                $d.querySelector('#doxxcs').addEventListener('click', () => {
+                    GM_setValue("doxxcs", true)
+                    if (newVersion) {
+                        const lis = [...$d.querySelectorAll("li")]
+                        lis.forEach(e => {
+                            if (e.getAttribute("dataname") === 'zj') {
+                                e.click()
+                            }
+                        })
+                    }
+                })
+            }, 1000);
+        })
+    }
+    // 刷章节页面
+    else if ($l.includes('.html?ut=s&classid') && $l.includes('/mooc-ans/course/') && !$l.includes('passport2')) {
+        if (checkDuoKai()) {
+            return;
+        }
+        $w.wait = false;
+        // 某些脚本在某些脚本插件运行时会导致此脚本版本号异常
+        if (!$version || $version == '' || $version == undefined) {
+            alert('请关闭其他同类型脚本，否则此脚本无法正常运行');
+        }
+        $d.getElementsByTagName('body')[0].innerHTML = '加载中。。。<br><br>如遇脚本异常，请尝试<a href="http://f12.cx">从脚本官网重新安装脚本</a>或者<a href="https://scriptcat.org/zh-CN/script-show-page/1127">从第三方更新脚本</a>';
+        let beisu = 1,
+            vgqtlv = 85
+        const checkIframe = function (iframe) {
+            return new Promise((success, fail) => {
+                iframe.onload = function () {
+                    success();
+                }
+            })
+        },
+            anhwudinai = function (courseid, classid, cpi) {
+                this.referer = false
+                this.conversation = {
+                    sending: false,
+                    error: false,
+                    list: []
+                }
+                this.readys = false
+                this.cozeEnc = false
+                this.botId = false
+                this.userId = false
+                this.appId = false
+                this.conversationId = false
+                this.ready = function (timeout = 3000) {
+                    if (this.readys) {
+                        return true
+                    }
+                    const url = 'https://mooc1.chaoxing.com/course-ans/ai/getStuAiWorkBench?courseId=' + courseid + '&clazzId=' + classid + '&cpi=' + cpi + '&ut=s&'
+                    return new Promise((a, _) => {
+                        GM_xmlhttpRequest({
+                            url,
+                            method: 'get',
+                            timeout,
+                            onload: (res) => {
+                                if (res.status != 200) {
+                                    a(false)
+                                } else {
+                                    const d = unsafeWindow.document.createElement('div')
+                                    d.innerHTML = res.responseText
+                                    const iframe = d.querySelector('.menuTab')
+                                    this.referer = iframe.getAttribute('hrefStr')
+                                    GM_xmlhttpRequest({
+                                        url: this.referer,
+                                        method: 'get',
+                                        timeout,
+                                        onload: (res) => {
+                                            if (res.status != 200) {
+                                                a(false)
+                                            } else {
+                                                const d = unsafeWindow.document.createElement('div')
+                                                d.innerHTML = res.responseText
+                                                this.cozeEnc = d.querySelector('#cozeEnc').value
+                                                this.botId = d.querySelector('#botId').value
+                                                this.userId = d.querySelector('#userId').value
+                                                this.appId = d.querySelector('#appId').value
+                                                this.conversationId = d.querySelector('#conversationId').value
+                                                this.readys = true
+                                                a(true)
+                                            }
+                                        },
+                                        onerror: function (e) {
+                                            console.log(e)
+                                            a(false)
+                                        },
+                                        onabort: function (e) {
+                                            console.log(e)
+                                            a(false)
+                                        },
+                                        ontimeout: function (e) {
+                                            console.log(e)
+                                            a(false)
+                                        },
+                                    })
+                                }
+                            },
+                            onerror: function (e) {
+                                console.log(e)
+                                a(false)
+                            },
+                            onabort: function (e) {
+                                console.log(e)
+                                a(false)
+                            },
+                            ontimeout: function (e) {
+                                console.log(e)
+                                a(false)
+                            }
+                        })
+                    })
+                }
+                this.send = function (type, tm, options = []) {
+                    let t = ['单选题', '多选题', false, '判断题']
+                    let o = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K']
+                    let tt = t[type]
+                    let content = `(${tt})${tm}\n`
+                    if (type != 3) {
+                        let option = ''
+                        for (let i in options) {
+                            if (options[i].includes('/')) {
+                                return false
+                            }
+                            option += `${o[i]}、${options[i]}\n`
+                        }
+                        content += option
+                    }
+                    content += "这道题选什么？"
+                    return new Promise((a, _) => {
+                        if (!this.readys) {
+                            a(false)
+                        }
+                        if (this.conversation.sending) {
+                            this.conversation.error = '上一条消息正在发送，请稍后'
+                            a(false)
+                        }
+                        this.conversation.sending = true
+                        this.conversation.list.push({
+                            "role": "user",
+                            "content": content,
+                            "baseData": {
+                                "conversationId": this.conversationId,
+                                "userId": this.userId,
+                                "appId": this.appId,
+                                "botId": this.botId
+                            }
+                        })
+                        let sentence = ''
+                        let msgId = '0'
+                        GM_xmlhttpRequest({
+                            method: 'POST',
+                            url: `https://stat2-ans.chaoxing.com/bot/talk?cozeEnc=${this.cozeEnc}&botId=${this.botId}&userId=${this.userId}&appId=${this.appId}&courseid=${courseid}&clazzid=${classid}`,
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Referer': this.referer
+                            },
+                            data: JSON.stringify(this.conversation.list),
+                            onload: (response) => {
+                                let word_ = response.responseText.replaceAll('data::server-heartbeat', '')
+                                let words = word_.split("\n\ndata:$_$")
+                                words.forEach(element => {
+                                    if (!element || element == '') {
+                                        return
+                                    }
+                                    element = element.replace(/\n\n$/)
+                                    try {
+                                        JSON.parse(element)
+                                    } catch {
+                                        return
+                                    }
+                                    let word_json = JSON.parse(element)
+                                    let word = word_json.content
+                                    if (typeof word_json.content !== 'undefined') {
+                                        msgId = word_json.id
+                                        sentence += word
+                                    }
+                                })
+                                this.conversation.list.push({
+                                    "id": Date.now(),
+                                    "role": "assistant",
+                                    "content": sentence,
+                                    "done": true,
+                                    "msgs": {},
+                                    "followUps": [],
+                                    "msgId": msgId,
+                                    "convertContent": `<p>${sentence}</p>`
+                                })
+                                this.conversation.sending = false
+                                let answer = false
+                                if (type != 3) {
+                                    answer = this.form(type, options, sentence)
+                                } else {
+                                    let a = sentence.indexOf('正确')
+                                    let b = sentence.indexOf('错误')
+                                    if (a === -1 && b === -1) {
+                                        answer = false
+                                    } else if (a !== -1 && b != -1) {
+                                        answer = a < b ? '正确' : '错误'
+                                    } else {
+                                        answer = a === -1 ? '错误' : '正确'
+                                    }
+                                }
+                                a(answer)
+                            },
+                            onerror: function (error) {
+                                this.conversation.sending = false
+                                console.error('请求失败:', error)
+                            }
+                        });
+                    })
+                }
+                this.form = function (type, options, str) {
+                    let result = false
+                    for (let i = 0; i < str.length; i++) {
+                        if (str[i] === '\n' || i > 30) {
+                            return result
+                        }
+                        // 检查是否是大写字母
+                        if (str[i] >= 'A' && str[i] <= 'Z') {
+                            const letterNum = str[i].charCodeAt(0) - 'A'.charCodeAt(0) + 1
+                            if (letterNum > options.length) {
+                                continue
+                            } else if (type == 0) {
+                                return options[letterNum - 1]
+                            } else {
+                                if (!result) {
+                                    result = ''
+                                }
+                                result += options[letterNum - 1] + '#'
+                            }
+
+                        }
+                    }
+                    return result
+                }
+            }
+        async function main() {
+            $d.querySelector('html').innerHTML = `
+            <!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>超星刷课工具</title>
+    <link rel="stylesheet" href="https://tk.tk.icu/assets/css/bootstrap.min.css" />
+</head>
+<style>
+    @font-face {
+        font-family: "阿里妈妈方圆体 VF Regular";
+        src: url("//at.alicdn.com/wf/webfont/bb6sz9d6E2UG/zkh0i2ziCDKY.woff2") format("woff2"),
+            url("//at.alicdn.com/wf/webfont/bb6sz9d6E2UG/tJ8Zk24AFUoT.woff") format("woff");
+        font-display: swap;
+    }
+
+    html,
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        position: relative;
+    }
+
+    .shadow {
+        position: absolute;
+        top: -20px;
+        left: 0;
+        width: 100%;
+        height: 110%;
+        background-color: #000;
+        opacity: 0.3;
+    }
+
+    .alert {
+        position: absolute;
+        top: 50vh;
+        left: 50vw;
+        transform: translate(-50%, -50%);
+        min-width: 260px;
+        max-width: 400px;
+        background-color: #fff;
+        border-radius: 2px;
+        box-shadow: 1px 1px 50px rgba(0, 0, 0, .3);
+        padding: 0;
+    }
+
+    .alert .alertHead {
+        padding: 0 80px 0 20px;
+        height: 42px;
+        line-height: 42px;
+        border-bottom: 1px solid #eee;
+        font-size: 14px;
+        color: #333;
+        overflow: hidden;
+        background-color: #F8F8F8;
+        border-radius: 2px 2px 0 0;
+    }
+
+    .alert .alertBody {
+        padding: 20px;
+        line-height: 24px;
+        word-break: break-all;
+        overflow: hidden;
+        font-size: 14px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .alert .buttons {
+        text-align: right;
+        padding: 0 15px 12px;
+        pointer-events: auto;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .alert .buttons .button {
+        display: inline-block;
+        height: 28px;
+        line-height: 28px;
+        margin: 5px 5px 0;
+        padding: 0 15px;
+        border-radius: 2px;
+        border-color: #1E9FFF;
+        background-color: #1E9FFF;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .alert .buttons span:hover {
+        opacity: .9;
+        text-decoration: none;
+    }
+
+    #courseName {
+        font-weight: 900;
+        font-family: "阿里妈妈方圆体 VF Regular";
+        color: #409eff;
+        animation: bounce;
+        animation-duration: 2s;
+    }
+
+    .tit-margin {
+        margin: 15px 0px;
+    }
+
+    #courseName:hover {
+        color: #306fae;
+        animation: shakeX;
+        animation-duration: 2s;
+        cursor: pointer;
+        transition: .2s;
+    }
+
+    .title-weight {
+        font-weight: bold;
+    }
+
+    .btn {
+        border-radius: 11px;
+    }
+
+    .btn-outline-success:hover {
+        background-color: #b9dfa6;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #409eff;
+    }
+
+    .card {
+        border-radius: 4px;
+        background-color: #FFF;
+        overflow: hidden;
+        transition: .3s;
+    }
+
+    .card:hover {
+        transform: translateY(-1%);
+        box-shadow: 1px 1px 10px 2px #CCC;
+    }
+
+    .start {
+        margin-left: 11px;
+    }
+
+    .floatTip {
+        position: absolute;
+        right: 0;
+        transform: translateY(25%);
+        color: #1E9FFF;
+        cursor: pointer;
+        display: inline-block;
+    }
+
+    .floattipbox {
+        position: relative;
+    }
+
+    #wic {
+        color: #1E9FFF;
+        font-size: 12px;
+        font-weight: 400;
+        cursor: pointer;
+    }
+
+    #result {
+        overflow-y: auto;
+        height: 289px;
+    }
+
+    .info {
+        padding-bottom: 5px;
+    }
+
+    .title-weight {
+        margin-bottom: 0;
+    }
+
+    #tra {
+        height: 1px;
+        overflow: hidden;
+    }
+</style>
+
+<body translate="no">
+    <div class="container-fluid">
+        <div class="row tit-margin">
+            <div class="col-12 text-center text-monospace">
+                <h1 id="courseName">课程名</h1>
+                <h5 id="tra">Trying to do the best</h5>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <div class="card" style="margin-top: 10px">
+                    <div class="card-body">
+                        <div>
+                            <div class="title-weight" style="padding: 0; font-size: 20px; float: left;">
+                                任务设置：
+                                <a id="doVideo" class="btn btn-light">视频任务</a>
+                                &#160;|&#160;
+                                <a id="doWork" class="btn btn-light">章节测试</a>&#160;
+                                <a id="AI" class="btn btn-light">AI答题</a>
+                                &#160;|&#160;
+                                <a id="doDocument" class="btn btn-light">文档任务</a>
+                                &#160;|&#160;
+                                <a id="doNoMission" class="btn btn-light">非任务点</a>
+                            </div>
+                            <br /><br /><br />
+                            <div class="title-weight" style="padding: 0; font-size: 20px; float: left">
+                                章节测试：<a id="autoSubmit" class="btn btn-light">自动提交</a>
+                                &nbsp;&nbsp;总开关：<a id="start" class="btn btn-success">点我启动</a>
+                                &#160;|&#160;<a id='start_new' class="btn btn-outline-danger">闯关模式</a>&#160;<a
+                                    id="wic">什么是闯关模式？</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 10px">
+                    <div class="card-body">
+                        <h5 class="card-title title-weight">脚本配置</h5>
+                        <form style="margin-top: 25px;">
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputEmail1">题库Token</label>
+                                    <div class="form-inline">
+                                        <input type="text" class="form-control" id="tokenInput" value="" />&ensp;
+                                        <a class="btn btn-outline-primary" id="bindQQ" target="_blank">绑定微信</a>
+                                    </div>
+                                    <small class="form-text text-muted">您需要填写题库token才能连接题库答题</small>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputPassword1">剩余次数</label>
+                                    <div class="form-inline">
+                                        <span class="floattipbox">
+                                            <input type="number" class="form-control" id="ugyvciuu" readonly="readonly"
+                                                value="9999" /><span class="floatTip"
+                                                id="ciuuq">刷新次数</span></span>&ensp;
+                                        <a class="btn btn-outline-primary" id="payButton" target="_blank">充值</a>
+                                    </div>
+                                    <small class="form-text text-muted">查题成功一次扣除1次数</small>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputPassword1">视频倍速</label>
+                                    <input type="number" class="form-control" id="beisuInput" />
+                                    <small class="form-text text-muted">倍速大于1倍会被清空进度</small>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="exampleInputPassword1">最低正确率</label>
+                                    <input type="number" class="form-control" id="vgqtlv" />
+                                    <small class="form-text text-muted">当脚本作答后的正确率低于这个数值时不会自动提交</small>
+                                </div>
+                            </div>
+                            <a class="btn btn-outline-primary" id="saveConfig">保存</a>
+                            <small class="form-text text-muted">保存后会实时生效</small>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card" style="margin-top: 10px">
+                    <div class="card-body">
+                        <h5 class="card-title title-weight">任务</h5>
+                        <div class="panel-heading">
+                            任务数量&#8194;:&#8194;共有
+                            <span id="totalNum">-</span>章节，剩余<span id="leftNum">-</span>章节
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 10px">
+                    <div class="card-body">
+                        <h5 class="card-title title-weight">当前任务进度</h5>
+                        <div class="panel-heading">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-info" id="jdbar"
+                                    style="width: 0%; min-width: 1.5em;">0%
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card" style="margin-top: 10px">
+                    <div class="card-body info">
+                        <h5 class="card-title title-weight">任务日志</h5>
+                        <div id="result" style="overflow: auto; line-height: 30px">
+                            <div id="log">
+                                <span style="color: red">[00:00:00]如果此提示不消失，说明页面出现了错误，请反馈</span><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="card" style="margin-top: 10px">
+                    <div class="card-body" id="iframe_content">
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="detail" style="display: none"></div>
+</body>
+
+</html>`;
+            await sleep(100);
+            let tkToken = getTkToken()
+            ctk(tkToken)
+            $w.logs = {
+                "addLog": function (str, color = "black") {
+                    const nowTime = new Date(),
+                        nowHour = (Array(2).join(0) + nowTime.getHours()).slice(-2),
+                        nowMin = (Array(2).join(0) + nowTime.getMinutes()).slice(-2),
+                        nowSec = (Array(2).join(0) + nowTime.getSeconds()).slice(-2),
+                        logElement = $d.querySelector('#log'),
+                        resultElement = $d.querySelector('#result'),
+                        span = $d.createElement('span')
+                    span.style.color = color
+                    span.style.display = "block"
+                    span.innerHTML = `[${nowHour}:${nowMin}:${nowSec}] ${str}`
+                    logElement.appendChild(span)
+                    resultElement.scrollTop = resultElement.scrollHeight;
+                },
+                "clear": function () {
+                    $d.querySelector('#log').innerHTML = '';
+                }
+            };
+            $w.chuangguan = false;
+            // let tkc = () => {
+            //     setTimeout(() => {
+            //         let token = getTkToken()
+            //         if (token) {
+            //             ctk(tkToken)
+            //         }
+            //         tkc();
+            //     }, 6e4);
+            // }
+            // tkc();
+            $d.getElementById('courseName').innerHTML = decodeURIComponent($s['coursename']);
+            if (/^((?!chrome|android).)*safari/i.test($w.navigator.userAgent)) {
+                $layer("<center>此脚本不支持Safari浏览器<br>请mac/ipad用户<a href='https://www.microsoft.com/zh-cn/edge/download'>安装Microsoft Edge浏览器</a></center>")
+            }
+            $layer(`<center><p>牢记脚本官网：<span style="color:blue;"><a href="http://f12.cx" target="_blank">f12.cx</a></span> 直接在浏览器访问</p><p>倍速刷视频会导致学习进度被清空</p><p>同账号多开脚本学习会导致学习进度被清空<p><p><a href="http://f12.cx/p-01.html" target="_blank">什么是清空？为什么会清空？</a></p><p><a href="https://greasyfork.cn/post/3" target="_blank">现已支持安卓端运行！</a></p><p><a href="https://greasyfork.cn/post/4" target="_blank">如何多开浏览器</a></p><p>脚本问题反馈群：<b>${$qqgroup}</b></p></center>`);
+            const doVideoButton = $d.querySelector('#doVideo'),
+                doDocumentButton = $d.querySelector('#doDocument'),
+                doWorkButton = $d.querySelector('#doWork'),
+                autoSubmitButton = $d.querySelector('#autoSubmit'),
+                saveConfigButton = $d.querySelector('#saveConfig'),
+                AIbutton = $d.querySelector('#AI'),
+                startButton = $d.querySelector('#start'),
+                startNewButton = $d.querySelector('#start_new'),
+                doNoMissionButton = $d.querySelector('#doNoMission'),
+                ciuuqButton = $d.querySelector('#ciuuq'),
+                wicButton = $d.querySelector('#wic');
+            doVideoButton.onclick = function () {
+                if ($w.chuangguan) {
+                    $w.logs.addLog('闯关模式下禁止操作', 'red');
+                    return;
+                }
+                let s = doVideoButton.getAttribute('class').includes('light');
+                GM_setValue('doVideo', (() => { return s && ((() => { doVideoButton.setAttribute('class', 'btn btn-primary'); $w.logs.addLog('将会处理视频任务', 'green'); return true; })()) || ((() => { doVideoButton.setAttribute('class', 'btn btn-light'); $w.logs.addLog('将不会处理视频任务', 'red'); return false; })()) })());
+            }
+            doDocumentButton.onclick = function () {
+                if ($w.chuangguan) {
+                    $w.logs.addLog('闯关模式下禁止操作', 'red');
+                    return;
+                }
+                let s = doDocumentButton.getAttribute('class').includes('light');
+                GM_setValue('doDocument', (() => { return s && ((() => { doDocumentButton.setAttribute('class', 'btn btn-primary'); $w.logs.addLog('将会处理文档任务', 'green'); return true; })()) || ((() => { doDocumentButton.setAttribute('class', 'btn btn-light'); $w.logs.addLog('将不会处理文档任务', 'red'); return false; })()) })());
+            }
+            doWorkButton.onclick = function () {
+                if ($w.chuangguan && GM_getValue('doWork', false)) {
+                    $w.logs.addLog('闯关模式下禁止操作', 'red');
+                    return;
+                }
+                let s = doWorkButton.getAttribute('class').includes('light');
+                GM_setValue('doWork', (() => { return s && ((() => { doWorkButton.setAttribute('class', 'btn btn-primary'); $w.logs.addLog('将会处理章节测试任务', 'green'); return true; })()) || ((() => { doWorkButton.setAttribute('class', 'btn btn-light'); $w.logs.addLog('将不会处理章节测试任务', 'red'); return false; })()) })());
+            }
+            AIbutton.onclick = function () {
+                if (!$w['AIwarning']) {
+                    $layer('<center><p>AI答题目前为测试功能</p><p>目前只支持章节测试的单选多选和判断题<p><p>不保证AI作答的成绩</p><p>只适用于补充题库没查到的题</p><p>建议关闭自动提交，作答完成后人工检查</p><p>脚本问题反馈群：<b>'+$qqgroup+'</b></p></center>');
+                    $w['AIwarning'] = true;
+                }
+                if ($w.left > 100) {
+                    let s = AIbutton.getAttribute('class').includes('light');
+                    GM_setValue('doAI', (() => { return s && ((() => { AIbutton.setAttribute('class', 'btn btn-primary'); $w.logs.addLog('AI答题已开启', 'green'); return true; })()) || ((() => { AIbutton.setAttribute('class', 'btn btn-light'); $w.logs.addLog('AI答题已关闭', 'red'); return false; })()) })());
+                } else {
+                    GM_setValue('doAI', 0)
+                    AIbutton.setAttribute('class', 'btn btn-light')
+                    $w.logs.addLog('为防止正确率过低，剩余答题次数过低时禁用AI答题', 'red');
+                }
+            }
+            autoSubmitButton.onclick = function () {
+                if ($w.chuangguan) {
+                    $w.logs.addLog('闯关模式下禁止操作', 'red');
+                    return;
+                }
+                let s = autoSubmitButton.getAttribute('class').includes('light');
+                GM_setValue('autoSubmit', (() => { return s && ((() => { autoSubmitButton.setAttribute('class', 'btn btn-primary'); $w.logs.addLog('正确率超过' + vgqtlv + '%的章节测试将会自动提交', 'green'); return true; })()) || ((() => { autoSubmitButton.setAttribute('class', 'btn btn-light'); $w.logs.addLog('章节测试将不会自动提交', 'red'); return false; })()) })());
+            }
+            doNoMissionButton.onclick = function () {
+                if ($w.chuangguan) {
+                    $w.logs.addLog('闯关模式下禁止操作', 'red');
+                    return;
+                }
+                let s = doNoMissionButton.getAttribute('class').includes('light');
+                GM_setValue('doNoMission', (() => { return s && ((() => { doNoMissionButton.setAttribute('class', 'btn btn-primary'); $w.logs.addLog('将会作答非任务点的章节测试（请刷新页面后继续）', 'green'); return true; })()) || ((() => { doNoMissionButton.setAttribute('class', 'btn btn-light'); $w.logs.addLog('将不会作答非任务点', 'red'); return false; })()) })());
+            }
+            saveConfigButton.onclick = function () {
+                let stkToken = $d.getElementById('tokenInput').value,
+                    reg = /^[0-9a-z]{32}$/ig,
+                    sbeisu = $d.getElementById('beisuInput').value,
+                    svgqtlv = $d.getElementById('vgqtlv').value;
+                if (!reg.test(stkToken)) {
+                    $layer('token格式不符');
+                    $d.getElementById('tokenInput').value = tkToken;
+                } else if (sbeisu < 0.5 || sbeisu > 16) {
+                    $layer('倍速必须在0.5-16之间');
+                } else if (svgqtlv < 0 || svgqtlv > 100) {
+                    $layer('正确率必须在0-100之间');
+                } else {
+                    beisu = sbeisu;
+                    vgqtlv = svgqtlv
+                    if (tkToken != stkToken) {
+                        $w.logs.clear()
+                        $w.logs.addLog('token已变更', 'green')
+                        if (GM_getValue('tkLeft', 0) > 0) {
+                            $layer('您的题库剩余次数不为0，请注意保存原token<br>丢失后请自行前往微信或支付宝查询付款记录<br>原token：' + tkToken)
+                        }
+                    }
+                    $layer('配置保存成功，已实时生效')
+                    tkToken = stkToken;
+                    GM_setValue('shenchanranToken', tkToken);
+                    $w.localStorage.removeItem('shenchanranToken')
+                    ctk(tkToken)
+                }
+            }
+            startButton.onclick = function () {
+                startButton.setAttribute('class', 'btn btn-light');
+                startButton.innerHTML = startNewButton.innerHTML = '任务已启动';
+                startButton.onclick = startNewButton.onclick = () => {
+                    $layer('如需停止任务，请刷新页面');
+                }
+                startButton.id = startNewButton.id = "abaaba";
+                start();
+                $w.logs.addLog('开始查询任务');
+            }
+            startNewButton.onclick = function () {
+                $layer('闯关模式将自动开启所有任务类型<br>建议调低答题正确率<br>遇到无法作答的题型与任务点将会自动终止');
+                GM_setValue('doVideo', true);
+                GM_setValue('doDocument', true);
+                GM_setValue('doWork', true);
+                $w.logs.addLog('视频、文档、章节测试任务已开启，如需重置，请刷新页面', 'green');
+                startNewButton.setAttribute('class', 'btn btn-light');
+                startNewButton.innerHTML = startButton.innerHTML = '闯关任务已启动';
+                startButton.onclick = startNewButton.onclick = () => {
+                    $layer('如需停止任务，请刷新页面');
+                }
+                startButton.id = startNewButton.id = "abaaba";
+                start();
+                $w.chuangguan = true;
+                $w.logs.addLog('开始查询任务');
+            }
+            let safeafew = 0
+            ciuuqButton.onclick = function () {
+                let now = Math.round(new Date() / 1000)
+                if (now - safeafew > 10) {
+                    safeafew = now
+                    ctk(tkToken)
+                } else {
+                    $layer('<p style="text-indent: 2em;">如果答题次数有问题，可能是您正在使用的token不是正确token</p><p style="text-indent: 2em;">更换设备、浏览器或者清空浏览器数据会导致token丢失，脚本会自动为您生成一个新Token。</p><p style="text-indent: 2em;">如果想找回之前的Token，请查看您的微信或支付宝付款记录，在商品名中有充值过的Token。</p><p style="text-indent: 2em;">如果您之前的Token绑定过QQ或微信，请直接访问<a href="http://tk.tk.icu/" target="_blank">题库官网</a>并使用绑定的账号登录，即可找回原Token。</p><p style="text-indent: 2em;">找回Token后请将Token复制到当前页面的Token输入框，然后点击保存按钮。</p><p style="text-indent: 2em;color:green;">为新Token绑定微信可以获得免费的100答题次数</p>')
+                }
+            }
+            wicButton.onclick = function () {
+                $layer('<p style="text-indent: 2em;">如果您的课程章节学完一节才能解锁下一节，不能跳过，那么这门课就是闯关模式，必须点击闯关模式按钮才能进行刷课</p>')
+            }
+            doVideoButton.setAttribute('class', ['btn btn-light', 'btn btn-primary'][GM_getValue('doVideo', 1) + 0]);
+            doDocumentButton.setAttribute('class', ['btn btn-light', 'btn btn-primary'][GM_getValue('doDocument', 1) + 0]);
+            doWorkButton.setAttribute('class', ['btn btn-light', 'btn btn-primary'][GM_getValue('doWork', 1) + 0]);
+            autoSubmitButton.setAttribute('class', ['btn btn-light', 'btn btn-primary'][GM_getValue('autoSubmit', 1) + 0]);
+            AIbutton.setAttribute('class', ['btn btn-light', 'btn btn-primary'][GM_getValue('doAI', 1) + 0]);
+            doNoMissionButton.setAttribute('class', ['btn btn-light', 'btn btn-primary'][GM_getValue('doNoMission', 0) + 0]);
+            $d.getElementById('tokenInput').value = tkToken;
+            $d.getElementById('beisuInput').value = beisu;
+            $d.getElementById('vgqtlv').value = vgqtlv;
+            $d.querySelector('#log').innerHTML = ''
+            $w.logs.addLog('脚本初始化成功，点击启动按钮开始刷课', 'green');
+        }
+        async function start() {
+            //如果用户给单个账号同时刷多门课（每个人都想这么做）就会被清空所有课程的进度，为了防止这种情况发生，添加检测，在刷视频时更新localstorage，触发其他页面的addEventListener
+            let multipleTold = false
+            $w.addEventListener('storage', (event) => {
+                if (!multipleTold && event.key == $uid && event.newValue != courseId) {
+                    $layer("每个账号同时只能刷一门课，单个账号同时刷多门课会导致所有刷的课被清空进度！")
+                    multipleTold = true
+                }
+            })
+            if ($d.querySelector("#tra").innerHTML != "Trying to do the best") {
+                $layer("请关闭网页翻译功能，否则将无法查题<br>（将外语题翻译为中文会0分）")
+            }
+            while (1) {
+                if (!$w.wait) {
+                    break;
+                }
+                await sleep(500);
+            }
+            let videoV = '2025-0725-1842'
+            const classId = $s['clazzid'] || $s['classid'] || $s['classId'] || $s['classId'],
+                courseId = $s['courseid'] || $s['courseId'],
+                cpi = $s['cpi'],
+                logs = $w.logs,
+                $siteHost = $protocol + $w.location.host,
+                audioPlayer = new Audio(audiofile),
+                updateBar = (now) => {
+                    try {
+                        let bar = $d.getElementById("jdbar");
+                        now = now > 100 ? 100 : now;
+                        bar.setAttribute("style", "width: " + now + "%; min-width: 2em;");
+                        bar.innerHTML = now + "%";
+                    } catch { }
+                }
+            try {
+                GM_xmlhttpRequest({
+                    method: 'GET',
+                    url: $siteHost + '/ananas/ueditor/ueditor.parse.js?t=' + Math.round(new Date() / 1000),
+                    data: 'string',
+                    timeout: 3000,
+                    onload(res) {
+                        if (res.responseText) {
+                            const regex = /modules\/video\/index\.html\?v=(\d{4}-\d{4}-\d{4})/m
+                            const match = res.responseText.match(regex)
+                            if (match) {
+                                videoV = match[1]
+                                console.log(videoV)
+                            } else {
+                                console.log(res.responseText)
+                            }
+                        }
+                    }
+                })
+            } catch (e) {
+                console.log(e)
+            }
+            let $fid = getCookie('fid') || false
+            if (!classId || !courseId) {
+                alert('参数不全，请重新进入此页面');
+                return;
+            }
+            const jkdata = GM_getValue('jkdata', {})
+            const jk = !!jkdata[classId]
+            jk && ($d.getElementById('courseName').innerHTML += '（已结课）')
+            audioPlayer.loop = true;
+            $w.audioPlayer = audioPlayer;
+            $d.addEventListener('visibilitychange', function () {
+                var c = 0;
+                if ($d.hidden) {
+                    audioPlayer.play();
+                    var timer = setInterval(function () {
+                        if (c) {
+                            $d.title = '🙈挂机中';
+                            c = 0;
+                        } else {
+                            $d.title = '🙉挂机中';
+                            c = 1;
+                        }
+                        if (!$d.hidden) {
+                            clearInterval(timer);
+                            $d.title = '超星刷课工具';
+                        }
+                    }, 1300);
+                } else {
+                    audioPlayer.pause();
+                }
+            })
+            $w.need = false;
+            let pointList = [],
+                pointNum = 0,
+                detailUrl = $siteHost + '/mycourse/studentstudycourselist?courseId=' + courseId + '&clazzid=' + classId + '&mooc2=1',
+                detailResult = await request({ 'url': detailUrl }),
+                getEnc = (attDuration, attDurationEnc, videoFaceCaptureEnc, classId, uid, jobid, objectid, duration, beisu, dtoken, otherInfo, rt, dtype) => {
+                    let isdrag = '3',
+                        encData = [];
+                    for (let playTime = 0; isdrag == '3'; playTime += Math.round(60 * beisu)) {
+                        if (playTime >= duration) {
+                            playTime = duration;
+                            isdrag = '4';
+                        }
+                        let strEc = `[${classId}][${uid}][${jobid}][${objectid}][${playTime * 1000}][d_yHJ!$pdA~5][${duration * 1000}][0_${duration}]`,
+                            enc = md5(strEc),
+                            url = '/' + dtoken + '?clazzId=' + classId + '&playingTime=' + playTime + '&duration=' + duration + '&clipTime=0_' + duration + '&objectId=' + objectid + '&otherInfo=' + otherInfo + '&jobid=' + jobid + '&userid=' + uid + '&isdrag=' + isdrag + '&view=pc&enc=' + enc + '&rt=' + rt + '&videoFaceCaptureEnc=' + videoFaceCaptureEnc + '&dtype=' + dtype + '&_t=' + Date.now() + '&attDuration=' + attDuration + '&attDurationEnc=' + attDurationEnc;
+                        encData.push([url, isdrag]);
+                    }
+                    return encData;
+                };
+            $d.getElementById('detail').innerHTML = detailResult.responseText;
+            await sleep(1000);
+            let divs = [...$d.getElementsByClassName('menulist-menu-title'), ...$d.getElementsByClassName('posCatalog_select'), ...$d.querySelectorAll('h5'), ...$d.querySelectorAll('h4'), ...$d.querySelectorAll('h3'), ...$d.querySelectorAll('h2')]//适配部分学校自建服务器
+            for (let i = 0, l = divs.length; i < l; i++) {
+                if (!divs[i].id || !divs[i].id.includes('cur') || !divs[i].innerHTML) {//适配部分学校自建服务器，非任务点标签跳过
+                    continue
+                }
+                if (($w.chuangguan && !divs[i].innerHTML.includes('已完成')) || divs[i].innerHTML.includes('jobUnfinishCount')) {
+                    pointList.push(divs[i].id.replace('cur', ''))
+                }
+            }
+            if (GM_getValue('doNoMission', false)) {
+                let noMissionUrl = $siteHost.replace('mooc1.', 'stat2-ans.').replace('mooc.', 'stat2-ans.') + '/stat2/chapter-exam/s/tests/data?clazzid=' + classId + '&courseid=' + courseId + '&ut=s&page=1&pageSize=200'
+                try {
+                    let noMissionResult = await request({ 'url': noMissionUrl }),
+                        noMissionJson = JSON.parse(noMissionResult.responseText).data.results;
+                    for (let i = 0; i < noMissionJson.length; i++) {
+                        let s = noMissionJson[i];
+                        if (s.isNonJob && s.statusStr != 4) {
+                            pointList.push(s.chapterId + '');
+                        }
+                    }
+                } catch (e) {
+                    console.log(e);
+                }
+            }
+            pointList = Array.from(new Set(pointList));
+            pointNum = pointList.length;
+            $d.getElementById('totalNum').innerHTML = $d.getElementById('leftNum').innerHTML = pointNum;
+            if (pointNum < 1) {
+                logs.addLog('该课程无可用任务点，请检查，或尝试重新登录（请勿在隐私/无痕页面运行）');
+                return;
+            }
+            logs.addLog('共有' + pointNum + '个任务点');
+            if ($w.chuangguan) {
+                logs.addLog('闯关模式每个章节等待时间可能会稍长，请耐心等待', 'orange');
+            }
+            pointNum++;
+            function* point() {
+                for (let i = 0, l = pointList.length; i < l; i++) {
+                    pointNum--;
+                    $d.getElementById('leftNum').innerHTML = pointNum;
+                    yield pointList[i];
+                }
+            }
+            let getPoint = point()
+            loopPoint:
+            while (1) {
+                let g = getPoint.next();
+                if (g.done) {
+                    logs.addLog('所有任务已完成（如果您的课程并没有完成，请检查是否为闯关任务点，如果是，请刷新页面并点击“闯关模式”按钮进行刷课）');
+                    if ($w.need) {
+                        logs.addLog('将进行第二次循环');
+                        start();
+                    }
+                    break;
+                }
+                let chapterId = g.value, page = 0;
+                try {
+                    let nowHour = new Date().getHours();
+                    if (nowHour < 6 && !$w.told) {
+                        $w.told = true;
+                        $layer('夜间学习会导致学习进度被清空');
+                    }
+                } catch (e) { console.log(e); }
+                if ($w.chuangguan) {
+                    await request({ 'url': `/mooc-ans/mycourse/studentstudyAjax?courseId=${courseId}&clazzid=${classId}&chapterId=${chapterId}` });
+                }
+                while (1) {
+                    try {
+                        while (1) {
+                            if (!$w.wait) {
+                                break;
+                            }
+                            await sleep(500);
+                        }
+                        await sleep($n(1, 4));
+                        let cardUrl = '/knowledge/cards?clazzid=' + classId + '&courseid=' + courseId + '&knowledgeid=' + chapterId + '&num=' + page + '&ut=s&cpi=' + cpi + '&v=20160407-1',
+                            Referer = $siteHost + '/mycourse/studentstudy?chapterId=' + chapterId + '&courseId=' + courseId + '&clazzid=' + classId + '&cpi=' + cpi + '&enc=' + randomString() + '&mooc2=1&openc=' + randomString();
+                        cardResult = await request({
+                            'headers': {
+                                'Referer': Referer
+                            },
+                            'url': cardUrl
+                        });
+                        page++;
+                        if (!cardResult) {
+                            continue loopPoint;
+                        }
+                        if (cardResult.responseText.includes('mArg = $mArg;')) {
+                            await sleep(1);
+                            continue loopPoint;
+                        }
+                        let mArgs = cardResult.responseText.match(/mArg([\x00-\x1F\x7F]|\s)*=([\x00-\x1F\x7F]|\s)*(.+);([\x00-\x1F\x7F]|\s)*}([\x00-\x1F\x7F]|\s)*catch\(e\)/);
+                        if (!mArgs) {
+                            if ($w.chuangguan) {
+                                logs.addLog('无法获取章节内容，请检查上一章节是否已完成，是否有未提交的章节测试', 'red');
+                            } else {
+                                logs.addLog('无法获取章节内容，章节可能未开放', 'red');
+                            }
+                            continue loopPoint;
+                        }
+                        let mArg = mArgs[0].replace(/mArg([\x00-\x1F\x7F]|\s)*=([\x00-\x1F\x7F]|\s)*/, '').replace(/;([\x00-\x1F\x7F]|\s)*}([\x00-\x1F\x7F]|\s)*catch\(e\)/, ''),
+                            mArgJson = JSON.parse(mArg),
+                            reportUrl = mArgJson.defaults.reportUrl;
+                        $fid = $fid || mArgJson.defaults['fid'] || '666'
+                        for (let i = 0, l = mArgJson.attachments.length; i < l; i++) {
+                            try {
+                                while (1) {
+                                    if (!$w.wait) {
+                                        break;
+                                    }
+                                    await sleep(500);
+                                }
+                                let jobData = mArgJson.attachments[i];
+                                if (!jobData.job) {
+                                    if (jobData.type == 'workid' && GM_getValue('doNoMission', false)) {
+                                        console.log('有非任务点');
+                                    } else {
+                                        continue;
+                                    }
+                                } try {
+                                    if (jobData.property.module == 'insertbook') {
+                                        jobData.type = 'book';
+                                        jobData.property.name = jobData.property.bookname;
+                                    }
+                                } catch (e) { }
+                                let nowBar, barr;
+                                loopType:
+                                switch (jobData.type) {
+                                    case 'video':
+                                        if (!GM_getValue('doVideo', true)) {
+                                            logs.addLog('跳过任务：' + jobData.property.name, 'red');
+                                            break;
+                                        }
+                                        let videoFaceCaptureEnc = jobData.videoFaceCaptureEnc || '',
+                                            attDurationEnc = jobData.attDurationEnc || '',
+                                            attDuration = jobData.attDuration || '0',
+                                            statusUrl = '/ananas/status/' + jobData.property.objectid + '?k=' +
+                                                $fid + '&flag=normal&_dc=' + String(Math.round(new Date())),
+                                            videoInfoResult = await request({
+                                                'headers': {
+                                                    'Referer': $protocol + $w.location.host + '/ananas/modules/video/index.html?v=' + videoV
+                                                },
+                                                'url': statusUrl
+                                            }),
+                                            doubleSpeed = jobData.property.doublespeed || 0,
+                                            fastforward = jobData.property.fastforward || "false",
+                                            allowBs = false
+                                        if (!videoInfoResult) {
+                                            logs.addLog('获取视频信息失败，跳过此任务：' + jobData.property.name, 'red');
+                                            break loopType;
+                                        }
+                                        if (doubleSpeed == 1 || fastforward === "false") {
+                                            allowBs = true
+                                        }
+                                        let videojs_id = String(parseInt($n(1000, 9999))),
+                                            videoInfo = JSON.parse(videoInfoResult.responseText);
+                                        if (videoInfo.status != "success") {
+                                            logs.addLog('视频还没有准备好，跳过此任务：' + jobData.property.name, 'red');
+                                            break loopType;
+                                        }
+                                        if (!videoInfo.duration) {//老师上传的视频长度小于1秒，就会出现此问题
+                                            logs.addLog('异常视频，无法完成：' + jobData.property.name, 'red');
+                                            break loopType;
+                                        }
+                                        logs.addLog('开始刷视频：' + jobData.property.name)
+                                        let dtype = 'Video'
+                                        if (jobData.property.module.includes('audio') || jobData.property.module.includes('voice')) {
+                                            dtype = 'Audio'
+                                        }
+                                        let videoDatas = getEnc(attDuration, attDurationEnc, videoFaceCaptureEnc, classId, $uid, jobData.jobid, videoInfo.objectid, videoInfo.duration, beisu, videoInfo.dtoken, jobData.otherInfo, jobData.property.rt || '0.9', dtype),
+                                            errTimes = 0,
+                                            hasErr = false,
+                                            min = 0,
+                                            totalMin = parseFloat((videoInfo.duration / 60).toFixed(2));
+                                        if (是否启用后台服务器 == '1') {
+                                            let pushData = {
+                                                'uid': $uid,
+                                                'name': jobData.property.name,
+                                                'jobId': jobData.jobid,
+                                                'list': []
+                                            };
+                                            for (let i = 0, l = videoDatas.length; i < l; i++) {
+                                                let url = videoDatas[i][0],
+                                                    sendUrl = reportUrl + url;
+                                                pushData.list.push(sendUrl);
+                                            }
+                                            let result = await brequest(
+                                                {
+                                                    'url': 'http://' + 服务器地址 + ':' + 端口 + '/add',
+                                                    'method': 'post',
+                                                    'data': JSON.stringify(pushData),
+                                                    'headers': {
+                                                        "Content-Type": "application/json"
+                                                    }
+                                                }
+                                            );
+                                            if (result.status == '1') {
+                                                logs.addLog('已提交后台任务：' + jobData.property.name, 'blue');
+                                                await sleep(3000);
+                                                break loopType;
+                                            } else {
+                                                logs.addLog('后台服务连接失败，请检查是否启动' + jobData.property.name, 'blue');
+                                            }
+                                        }
+                                        updateBar(0);
+                                        nowBar = 0;
+                                        barr = setInterval(function () {
+                                            nowBar += 10;
+                                            updateBar(Math.round(nowBar / totalMin * beisu / 0.6));
+                                        }, 10000);
+                                        $d.cookie = 'videojs_id=' + videojs_id + ';path=/';
+                                        for (let i = 0, l = videoDatas.length; i < l; i++) {
+                                            if (!hasErr) {
+                                                errTimes = 0
+                                            }
+                                            while (1) {
+                                                if (!$w.wait) {
+                                                    break;
+                                                }
+                                                await sleep(500);
+                                            }
+                                            let url = videoDatas[i][0],
+                                                isdrag = videoDatas[i][1],
+                                                sendUrl = reportUrl + url;
+                                            watchResult = await request({
+                                                headers: {
+                                                    'Referer': $protocol + $w.location.host + '/ananas/modules/video/index.html?v=' + videoV,
+                                                    'Sec-Fetch-Site': 'same-origin'
+                                                },
+                                                url: sendUrl
+                                            })
+                                            localStorage.setItem($uid, courseId)
+                                            if (!watchResult) {
+                                                if (errTimes > 2) {
+                                                    logs.addLog('上传视频进度失败超过三次，跳过此任务：' + jobData.property.name, 'red');
+                                                    clearInterval(barr);
+                                                    break loopType;
+                                                }
+                                                errTimes++;
+                                                logs.addLog('上传视频进度失败，将再次重试' + String(3 - errTimes) + '次', 'red')
+                                                if (!hasErr) {
+                                                    i > 0 && i--
+                                                }
+                                                await sleep(3000)
+                                                hasErr = true
+                                                continue
+                                            } else if (watchResult.status != '200') {
+                                                if (jk) {
+                                                    logs.addLog('该课程已结课，视频任务无法完成', 'red');
+                                                    clearInterval(barr);
+                                                    break loopType;
+                                                }
+                                                if (errTimes > 2) {
+                                                    logs.addLog('上传视频进度失败超过三次，跳过此任务：' + jobData.property.name, 'red');
+                                                    clearInterval(barr);
+                                                    break loopType;
+                                                }
+                                                errTimes++;
+                                                logs.addLog('超星返回错误信息，将再次重试' + String(3 - errTimes) + '次', 'red')
+                                                if (!hasErr) {
+                                                    i > 0 && i--
+                                                }
+                                                await sleep(3000)
+                                                hasErr = true
+                                                continue
+                                            }
+                                            hasErr = false
+                                            let watchResultJson = JSON.parse(watchResult.responseText);
+                                            if (watchResultJson.isPassed) {
+                                                logs.addLog('视频任务完成：' + jobData.property.name, 'green');
+                                                clearInterval(barr);
+                                                break loopType;
+                                            } else if (isdrag == '4') {
+                                                logs.addLog('视频已观看完毕，但视频任务未完成：' + jobData.property.name, 'red');
+                                                clearInterval(barr);
+                                                break loopType;
+                                            } else {
+                                                beisu > 1 && !allowBs && logs.addLog('此视频不允许倍速播放，开启倍速会被清空进度，当前倍速为' + String(beisu) + '倍', 'red');
+                                                let left = Math.ceil(totalMin / beisu - min)
+                                                if (left < -1) {
+                                                    logs.addLog('视频已观看完毕，但视频任务未完成：' + jobData.property.name, 'red');
+                                                    clearInterval(barr);
+                                                    break loopType;
+                                                }
+                                                logs.addLog('视频已观看' + String(Math.floor(min * beisu)) + '分钟，剩余大约' + left + '分钟' + (beisu > 1 ? '，倍速：' + String(beisu) + '倍' : ''));
+                                            }
+                                            min++;
+                                            try {
+                                                let today = new Date(),
+                                                    todayStr = today.getFullYear() + 'd' + today.getMonth() + 'd' + today.getDate(),
+                                                    timelong = GM_getValue('timelong', {});
+                                                timelong.$uid = undefined;
+                                                if (timelong['u' + $uid] == undefined || timelong['u' + $uid].today != todayStr) {
+                                                    timelong['u' + $uid] = {
+                                                        'time': 0,
+                                                        'today': todayStr,
+                                                        'studyDetail': {}
+                                                    };
+                                                } else {
+                                                    timelong['u' + $uid].time++;
+                                                }
+                                                timelong['u' + $uid].studyDetail['c' + courseId] = Math.round(new Date() / 1000)
+                                                GM_setValue('timelong', timelong);
+                                                if (timelong['u' + $uid].time / 60 >= 18) {
+                                                    if (!$w.timeTold) {
+                                                        $layer('您今日学习时间过长，继续学习会清除进度');
+                                                    }
+                                                    $w.timeTold = true;
+                                                }
+
+                                            } catch (e) { console.log(e); }
+                                            await sleep(60000);
+                                        }
+                                    case 'document':
+                                        if (!GM_getValue('doDocument', true)) {
+                                            logs.addLog('跳过任务：' + jobData.property.name, 'red');
+                                            break;
+                                        }
+                                        logs.addLog('开始文档任务：' + jobData.property.name);
+                                        await sleep(5000);
+                                        let doDocumentResult = await request({
+                                            'url': '/ananas/job/document?jobid=' + jobData.jobid +
+                                                '&knowledgeid=' + chapterId + '&courseid=' + courseId + '&clazzid=' + classId + '&jtoken=' + jobData.jtoken
+                                        });
+                                        if (!doDocumentResult) {
+                                            logs.addLog('阅读文档失败：' + jobData.property.name, 'red');
+                                            break;
+                                        }
+                                        try {
+                                            let doDocumentJson = JSON.parse(doDocumentResult.responseText);
+                                            if (doDocumentJson.status) {
+                                                logs.addLog('文档任务完成：' + jobData.property.name, 'green');
+                                                break;
+                                            } else {
+                                                if (jk) {
+                                                    logs.addLog('该课程已结课，文档任务无法完成', 'red');
+                                                } else {
+                                                    logs.addLog('文档任务失败：' + jobData.property.name, 'red');
+                                                }
+                                                break;
+                                            }
+                                        } catch (e) {
+                                            logs.addLog('解析文档内容失败：' + jobData.property.name, 'red');
+                                            break;
+                                        }
+                                    case 'workid':
+                                        if (!GM_getValue('doWork', true)) {
+                                            logs.addLog('跳过任务：' + jobData.property.title, 'red');
+                                            break;
+                                        }
+                                        let workid, jobid, noMission, workPageUrl;
+                                        try {
+                                            workid = jobData.jobid.replace('work-', '');
+                                        } catch { }
+                                        if (!workid) {
+                                            if (GM_getValue('doNoMission', false)) {
+                                                noMission = true;
+                                            }
+                                            try {
+                                                workid = jobData.property.workid;
+                                            } catch { }
+                                        }
+                                        if (!workid) {
+                                            try {
+                                                workid = jobData.property._jobid.replace('work-', '');
+                                            } catch { }
+                                        }
+                                        try {
+                                            jobid = jobData.jobid;
+                                        } catch { }
+                                        if (!jobid) {
+                                            try {
+                                                jobid = jobData.property._jobid;
+                                            } catch { }
+                                        }
+                                        if (!jobid) {
+                                            try {
+                                                jobid = 'work-' + jobData.property.workid;
+                                            } catch { }
+                                        }
+                                        if (noMission) {
+                                            workPageUrl = '/mooc-ans/work/phone/work?workId=' + workid + '&courseId=' + courseId + '&clazzId=' + classId + '&knowledgeId=' + chapterId + '&jobId=&enc=' + jobData.enc;
+                                        } else {
+                                            workPageUrl = '/work/phone/work?workId=' + workid + '&courseId=' + courseId + '&clazzId=' + classId + '&knowledgeId=' + chapterId + '&jobId=' + jobid + '&enc=' + jobData.enc;
+                                        }
+                                        let workPageResult = await request({
+                                            'url': workPageUrl,
+                                            'headers': {
+                                                'User-Agent': 'Mozilla/5.0 (Linux; Android 11.0.1; ASUS_I005DA Build/LMY48Z; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/52.0.2743.100 Mobile Safari/537.36 com.chaoxing.mobile/ChaoXingStudy_6_3.2_android_phone_205_1 (ASUS_I005DA; Android 11.0.1; zh_CN)_-351523749 Edg/122.0.0.0'
+                                            },
+                                        })
+                                        if (!workPageResult.responseText.includes('submitData()')) {
+                                            console.log('跳过已答测试')
+                                            break
+                                        }
+                                        if (!(workPageResult && workPageResult.status == 200 && workPageResult.responseText.includes('<title>章节</title>'))) {
+                                            logs.addLog('获取章节测试失败：' + jobData.property.title, 'red');
+                                            break
+                                        }
+                                        const originalSetAttribute = HTMLElement.prototype.setAttribute;
+                                        // 部分校园网会劫持setAttribute方法，恢复初始
+                                        HTMLElement.prototype.setAttribute = function (name, value) {
+                                            return originalSetAttribute.call(this, name, value);
+                                        }
+                                        let iframe = $d.createElement('iframe');
+                                        iframe.setAttribute('translate', 'no')
+                                        iframe.setAttribute('frameborder', '0')
+                                        iframe.setAttribute('scrolling', 'auto')
+                                        iframe.setAttribute('style', 'width: 100%;height: auto;')
+                                        let srcdoc = workPageResult.responseText.replaceAll(/alert\(/ig, 'console.log(').replaceAll(/confirm\((.*?)\)/ig, 'true').replaceAll('ua = "pc"', 'ua = "app"').replaceAll(/<br>/ig, '').replaceAll(/<\/br>/ig, '')
+                                        iframe.setAttribute('srcdoc', srcdoc)
+                                        let iframe_content = $d.querySelector('#iframe_content')
+                                        iframe_content.innerHTML = ''
+                                        iframe_content.appendChild(iframe)
+                                        await checkIframe(iframe)
+                                        let $p = iframe.contentDocument,
+                                            $pw = iframe.contentWindow,
+                                            wIdE = $p.getElementById('oldWorkId') || $p.getElementById('workLibraryId');
+                                        if (!wIdE) {
+                                            logs.addLog('获取章节测试错误：' + jobData.property.title, 'red');
+                                            break;
+                                        }
+
+                                        let questionList = [],
+                                            questionsElement = $p.getElementsByClassName('Py-mian1'),
+                                            questionNum = questionsElement.length,
+                                            abledQuestionNum = 0,
+                                            checkedQuestionNum = 0,
+                                            wid = wIdE.value,
+                                            optionElements = $p.getElementsByClassName('clearfix'),
+                                            lis = $p.getElementsByTagName('li'),
+                                            optionLis = [],
+                                            answerInputs = $p.getElementsByClassName('answerInput');
+                                        if (!questionsElement.length) {
+                                            logs.addLog('无题：' + jobData.property.title, 'red');
+                                            break;
+                                        }
+                                        for (let i = 0, l = optionElements.length; i < l; i++) {
+                                            try {
+                                                optionElements[i].setAttribute('class', 'clearfix');
+                                            } catch (e) { console.log(e); }
+                                        }
+                                        for (let i = 0, l = lis.length; i < l; i++) {
+                                            try {
+                                                if (lis[i].getAttribute('id-param')) {
+                                                    optionLis.push(lis[i]);
+                                                }
+                                            } catch (e) { console.log(e); }
+                                        }
+                                        for (let i = 0, l = answerInputs.length; i < l; i++) {
+                                            try {
+                                                answerInputs[i].value = '';
+                                            } catch (e) { console.log(e); }
+                                        }
+                                        for (let i = 0; i < questionNum; i++) {
+                                            try {
+                                                let questionElement = questionsElement[i],
+                                                    inputElements = questionElement.querySelectorAll('input'),
+                                                    questionId = '0',
+                                                    typeN = '666',
+                                                    question = questionElement.getElementsByClassName('Py-m1-title fs16')[0].innerHTML,
+                                                    tiankongsize = 0,
+                                                    tiankongNew = false//是否为新版填空
+                                                question = handleImgs(question).replace(/(<([^>]+)>)/ig, '').replace(/[0-9]{1,3}\.\[(.*?)\]/ig, '').replaceAll('\n', '').replace(/^([\x00-\x1F\x7F]|\s)+/ig, '').replace(/([\x00-\x1F\x7F]|\s)+$/ig, '');
+                                                for (let z = 0, k = inputElements.length; z < k; z++) {
+                                                    try {
+                                                        let id = inputElements[z].id
+                                                        let name = inputElements[z].getAttribute('name')
+                                                        if (name && name.includes('tiankongsize') && inputElements[z].value) {
+                                                            tiankongsize = inputElements[z].value
+                                                        }
+                                                        if (id.includes('answer')) {
+                                                            if (id.includes('answertype')) {
+                                                                typeN = inputElements[z].value
+                                                                if (/^answertype\d+/.test(id)) {
+                                                                    questionId = id.replace('answertype', 'answer')
+                                                                }
+                                                            } else {
+                                                                if (/answer(s)?\d+/.test(id)) {
+                                                                    questionId = id.replace('answers', 'answer')
+                                                                }
+                                                            }
+                                                        }
+                                                    } catch (e) {
+                                                        console.log(e);
+                                                        continue;
+                                                    }
+                                                }
+                                                if (questionId == '0' || question == '') {
+                                                    console.log('无法获取题目信息')
+                                                    continue;
+                                                }
+                                                if (!['0', '1', '2', '3'].includes(typeN)) {
+                                                    console.log('不是可作答题型')
+                                                    continue;
+                                                }
+                                                let type = {
+                                                    '0': '单选题',
+                                                    '1': '多选题',
+                                                    '2': '填空题',
+                                                    '3': '判断题'
+                                                }[typeN];
+                                                let optionList = {
+                                                    length: 0
+                                                }
+                                                let inputList = []
+                                                if (['单选题', '多选题'].includes(type)) {
+                                                    let answersElements = questionElement.getElementsByClassName('answerList')[0].getElementsByTagName(
+                                                        'li');
+                                                    for (let x = 0, j = answersElements.length; x < j; x++) {
+                                                        let optionE = answersElements[x],
+                                                            optionEm = optionE.querySelector('em'),
+                                                            optionTextE = beforeTrim(optionE.innerHTML.replace(/(^([\x00-\x1F\x7F]|\s)*)|(([\x00-\x1F\x7F]|\s)*$)/g, "")),
+                                                            optionText = optionTextE.slice(1).replace(/(^([\x00-\x1F\x7F]|\s)*)|(([\x00-\x1F\x7F]|\s)*$)/g, ""),
+                                                            optionValue = optionEm ? optionEm.getAttribute('id-param') : optionTextE.slice(0, 1);
+                                                        if (optionText == '') {
+                                                            break;
+                                                        }
+                                                        optionList[optionText] = optionValue
+                                                        optionList.length++
+                                                    }
+                                                    if (answersElements.length != optionList.length) {
+                                                        continue
+                                                    }
+                                                } else if (type == '判断题') {
+                                                    optionList = { '对': 'A', '错': 'B' }
+                                                } else {//填空题
+                                                    inputList = questionElement.querySelectorAll('input.answerInput')
+                                                    if (!inputList || inputList.length < 1) {//旧版填空答题
+                                                        tiankongNew = true
+                                                        inputList = []
+                                                        if (tiankongsize == 0) {//旧版无法找到，并且新版也无
+                                                            logs.addLog('无法找到填空题信息：', 'red');
+                                                            continue
+                                                        } else {
+                                                            let iframes = questionElement.querySelectorAll('iframe[id^="ueditor_"]');
+                                                            for (let iframe of iframes) {
+                                                                if (iframe) {
+                                                                    let d = iframe.contentDocument || iframe.contentWindow.document
+                                                                    if (d) {
+                                                                        let p = d.querySelector('p')
+                                                                        if (p) {
+                                                                            inputList.push(p)
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                    if (inputList.lengh == 0 || inputList.length != tiankongsize) {
+                                                        console.log(inputList)
+                                                        console.log(tiankongsize)
+                                                        logs.addLog('填空选项不匹配：', 'red');
+                                                        continue
+                                                    }
+                                                }
+
+                                                questionList.push({
+                                                    question,
+                                                    type,
+                                                    'questionid': questionId,
+                                                    'options': optionList,
+                                                    inputList,
+                                                    tiankongsize,
+                                                    tiankongNew
+                                                });
+                                                abledQuestionNum++;
+                                            } catch (e) { console.log(e); }
+                                        }
+                                        if (!abledQuestionNum) {
+                                            logs.addLog('该章节测试无可用题目：' + jobData.property.title, 'red');
+                                            break;
+                                        }
+                                        logs.addLog('开始做章节测试：' + jobData.property.title);
+                                        let enadblAI = false
+                                        let AI = false
+                                        if (GM_getValue('doAI', false) && anhwudinai) {
+                                            try {
+                                                AI = new anhwudinai(courseId, classId, cpi)
+                                                AI.ready()
+                                                enadblAI = true
+                                            } catch (e) {
+                                                console.log(e)
+                                            }
+                                        }
+                                        let sleeptime = $n(2, 4);
+                                        for (let i = 0, l = questionList.length; i < l; i++) {
+                                            try {
+                                                await sleep(sleeptime);
+                                                let questionArray = questionList[i],
+                                                    inputs = [...questionArray.inputList],
+                                                    tm = questionArray.question,
+                                                    type = questionArray.type,
+                                                    options = questionArray.options,
+                                                    optiont = {},
+                                                    optionsList = Object.keys(options).filter(e => {
+                                                        return e !== 'length';
+                                                    }),
+                                                    optionsJsonText = encodeURIComponent(JSON.stringify(optionsList)),
+                                                    panduans = ['正确', '对', '错误', '错'],
+                                                    xbp = false,
+                                                    types;
+                                                for (let e in options) {
+                                                    optiont[beforeTrim(e).replaceAll(/([\x00-\x1F\x7F]|\s)*/g, '')] = options[e];
+                                                }
+                                                options = optiont;
+                                                if (type != '判断题' && optionsList.length == 2 && panduans.includes(optionsList[0]) && panduans.includes(optionsList[1])) {
+                                                    // 某些判断题会以选择题的形式出现，虽然在页面上题型确实是选择题，但经过实测，在题库内的数据通常是判断题
+                                                    xbp = true
+                                                    types = '3'
+                                                } else {
+                                                    types = {
+                                                        '单选题': '0',
+                                                        '多选题': '1',
+                                                        '填空题': '2',
+                                                        '判断题': '3'
+                                                    }[type]
+                                                }
+                                                let answernum = inputs.length || '',
+                                                    questionid = questionArray.questionid,
+                                                    tkReady = false,
+                                                    starttime = Date.now(),
+                                                    tkResultJson = await brequest({
+                                                        method: 'post',
+                                                        headers: {
+                                                            "Content-Type": "application/x-www-form-urlencoded"
+                                                        },
+                                                        data: 'tm=' + encodeURIComponent(decodeHtmlEntities(tm).replace(/(^([\x00-\x1F\x7F]|\s)*)|(([\x00-\x1F\x7F]|\s)*$)/g, '')) + '&type=' + types + '&wid=' + wid + '&answernum=' + answernum + '&cid=' + courseId + '&options=' + optionsJsonText,
+                                                        url: host + 'api/query?token=' + (getTkToken()) + '&version=' + $version,
+                                                        "timeout": 2e4
+                                                    });
+                                                sleeptime = $n(2, 4) - Date.now() + starttime;
+                                                sleeptime <= 0 && (sleeptime = 100)
+                                                if (!tkResultJson) {
+                                                    logs.addLog('未找到答案：' + tm);
+                                                    continue;
+                                                }
+                                                try {
+                                                    tkLeft(tkResultJson.left, getTkToken());
+                                                    if (tkResultJson.code != 1) {
+                                                        if (tkResultJson.msg) {
+                                                            logs.addLog('题库错误：' + tkResultJson.msg, 'red');
+                                                            if ($w.left > 100 && GM_getValue('doAI', false) && enadblAI && AI.readys) {
+                                                                try {
+                                                                    tkReady = await AI.send(types, tm, optionsList)
+                                                                    if (!tkReady) {
+                                                                        logs.addLog('AI也没找到', 'red');
+                                                                        continue;
+                                                                    }
+                                                                } catch (e) {
+                                                                    console.log(e)
+                                                                    logs.addLog('AI答题出现未知错误', 'red');
+                                                                    continue
+                                                                }
+                                                            } else {
+                                                                continue
+                                                            }
+                                                        }
+                                                    } else if (tkResultJson.data) {
+                                                        tkReady = tkResultJson.data;
+                                                    }
+                                                    if (tkResultJson.left < 1) {
+                                                        $d.getElementById('doWork').setAttribute('class', 'btn btn-light');
+                                                        $w.logs.addLog('将不会处理章节测试任务', 'red');
+                                                        GM_setValue('doWork', false);
+                                                    }
+                                                } catch (e) {
+                                                    console.log(e);
+                                                }
+                                                if (!tkReady) {
+                                                    logs.addLog('无答案：' + tm);
+                                                    continue;
+                                                }
+                                                let tkRightAnswer = trim(tkReady).replaceAll(/([\x00-\x1F\x7F]|\s)/g, '')
+                                                if (xbp) {
+                                                    let panDuanResult = panDuan(tkRightAnswer)
+                                                    tkRightAnswer = optionsList[1]
+                                                    if (panDuanResult == 'r') {
+                                                        tkRightAnswer = optionsList[0]
+                                                    }
+                                                }
+                                                if (type == '判断题') {
+                                                    tkRightAnswer = tkRightAnswer.replaceAll(/([\x00-\x1F\x7F]|\s)/g, '');
+                                                    pdresult = panDuan(tkRightAnswer);
+                                                    if (pdresult === 'r') {
+                                                        tkRightAnswer = '对';
+                                                    } else if (pdresult === 'w') {
+                                                        tkRightAnswer = '错';
+                                                    }
+                                                }
+                                                logs.addLog(tm + '：' + tkRightAnswer);
+                                                let hasAnswer = false;
+                                                if (type != '填空题') {
+                                                    for (let o in options) {
+                                                        if (o == 'length') {
+                                                            continue;
+                                                        }
+                                                        let oo = o
+                                                        o = trim(o).replaceAll(/([\x00-\x1F\x7F]|\s)+/ig, '');
+                                                        function fuckMe() {
+                                                            for (let j = 0, a = optionLis.length; j < a; j++) {
+                                                                let nowO = optionLis[j];
+                                                                if (nowO.getAttribute('id-param') == questionid.replace('answer', '').replace('s', '')) {
+                                                                    let nowEm = nowO.querySelector('em');
+                                                                    if (nowEm) {
+                                                                        if (type == '判断题' && nowEm.innerHTML == options[oo]) {
+                                                                            $p.getElementById(questionid).value = { 'A': 'true', 'B': 'false' }[options[o]];
+                                                                            nowO.setAttribute('class', 'clearfix cur');
+                                                                            hasAnswer = true;
+                                                                        } else if (nowEm.getAttribute('id-param') == options[oo]) {
+                                                                            if (type == '单选题') {
+                                                                                $p.getElementById(questionid).value = options[oo];
+                                                                            } else {
+                                                                                let ovalue = $p.getElementsByName(questionid)[0].value;
+                                                                                ovalue += options[oo];
+                                                                                $p.getElementsByName(questionid)[0].value = $ascii(ovalue);
+                                                                            }
+                                                                            nowO.setAttribute('class', 'clearfix cur');
+                                                                            hasAnswer = true;
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        if (o == tkRightAnswer) {
+                                                            fuckMe()
+                                                            if (type == '单选题') {
+                                                                break//1年前写的15层if，再加一层function来修复出现的新问题，单选题的选项完全匹配时停止后续判断，防止选项过于判断包含导致答案正确但是选择错误
+                                                            }
+                                                        } else if (o.includes(tkRightAnswer) || tkRightAnswer.includes(o)) {
+                                                            fuckMe()
+                                                        }
+                                                    }
+                                                } else {
+                                                    if (!tkRightAnswer.includes('<img')) {
+                                                        let answers = tkRightAnswer.split('#!#')
+                                                        if (answers.length == inputs.length) {
+                                                            answers.forEach((a, b) => {
+                                                                if (questionArray.tiankongNew) {//新版
+                                                                    inputs[b].innerText = a
+                                                                } else {
+                                                                    inputs[b].value = a
+                                                                }
+                                                            })
+                                                            hasAnswer = true;
+                                                        }
+                                                    }
+                                                }
+                                                hasAnswer && (checkedQuestionNum++);
+                                            } catch (e) { console.log(e); }
+                                        }
+                                        let score = checkedQuestionNum / questionNum * 100;
+                                        await sleep($n(2, 4));
+                                        if (score >= vgqtlv && !!GM_getValue('autoSubmit', 1)) {
+                                            logs.addLog('正确率达标，自动提交');
+                                            $pw.toadd();
+                                            $pw.submitAction();
+                                        } else if (score > 0) {
+                                            logs.addLog(['未设置自动提交', '正确率不达标：' + String(Math.floor(score)) + '分'][GM_getValue('autoSubmit', 1) + 0] + '，自动保存');
+                                            $pw.noSubmit();
+                                        } else {
+                                            logs.addLog('一道题都没查出来，跳过');
+                                        }
+                                        await sleep($n(2, 4));
+                                        break;
+                                    case 'book':
+                                        if (!GM_getValue('doDocument', true)) {
+                                            logs.addLog('跳过任务：' + jobData.property.name, 'red');
+                                            break;
+                                        }
+                                        logs.addLog('开始图书任务：' + jobData.property.name);
+                                        await sleep(5000);
+                                        let bookResult = await request({
+                                            'url': '/ananas/job?jobid=' + jobData.jobid +
+                                                '&knowledgeid=' + chapterId + '&courseid=' + courseId + '&clazzid=' + classId + '&jtoken=' + jobData.jtoken
+                                        });
+                                        if (!bookResult) {
+                                            logs.addLog('阅读图书失败：' + jobData.property.name, 'red');
+                                            break;
+                                        }
+                                        try {
+                                            let doDocumentJson = JSON.parse(bookResult.responseText);
+                                            if (doDocumentJson.status) {
+                                                logs.addLog('图书任务完成：' + jobData.property.name, 'green');
+                                                break;
+                                            } else {
+                                                logs.addLog('图书任务失败：' + jobData.property.name, 'red');
+                                                break;
+                                            }
+                                        } catch (e) {
+                                            logs.addLog('解析图书内容失败：' + jobData.property.name, 'red');
+                                            break;
+                                        }
+                                    case 'hyperlink':
+                                        if (!GM_getValue('doDocument', true)) {
+                                            logs.addLog('跳过任务：' + jobData.property.title, 'red');
+                                            break;
+                                        }
+                                        logs.addLog('开始链接任务：' + jobData.property.title);
+                                        await sleep(2000);
+                                        let linkResult = await request({
+                                            'url': '/ananas/job/hyperlink?jobid=' + jobData.jobid +
+                                                '&knowledgeid=' + chapterId + '&courseid=' + courseId + '&clazzid=' + classId + '&jtoken=' + jobData.jtoken
+                                        });
+                                        if (!linkResult) {
+                                            logs.addLog('阅读链接失败：' + jobData.property.title, 'red');
+                                            break;
+                                        }
+                                        try {
+                                            let doLinkJson = JSON.parse(linkResult.responseText);
+                                            if (doLinkJson.status) {
+                                                logs.addLog('链接任务完成：' + jobData.property.title, 'green');
+                                                break;
+                                            } else {
+                                                logs.addLog('链接任务失败：' + jobData.property.title, 'red');
+                                                break;
+                                            }
+                                        } catch (e) {
+                                            logs.addLog('解析链接内容失败：' + jobData.property.title, 'red');
+                                            break;
+                                        }
+                                    case 'live':
+                                        if (!GM_getValue('doVideo', true)) {
+                                            logs.addLog('跳过直播任务：' + jobData.property.title, 'red');
+                                            break;
+                                        }
+                                        logs.addLog('开始直播任务：' + jobData.property.title)
+                                        let liveUrl = $protocol + $w.location.host + '/ananas/live/liveinfo?liveid=' + jobData.property['liveId'] + '&userid=' + $uid + '&clazzid=' + classId + '&knowledgeid=' + chapterId + '&courseid=' + courseId + '&jobid=' + jobData.jobid + '&ut=s',
+                                            liveInfo = await request({
+                                                'url': liveUrl
+                                            }),
+                                            rt = jobData.property.rt ? parseFloat(jobData.property['rt']) : 0.9;
+                                        if (!liveInfo) {
+                                            logs.addLog('获取直播信息失败，请联系作者反馈', 'red');
+                                            break;
+                                        }
+                                        liveInfo = JSON.parse(liveInfo.responseText);
+                                        let duration = liveInfo['temp']['data']['duration'],
+                                            timeLongValue = liveInfo['temp']['data']['timeLongValue'] * 60,
+                                            liveStatus = liveInfo['temp']['data']['liveStatus'];
+                                        if (liveStatus != 4) {
+                                            logs.addLog('直播不允许回看，无法播放：' + jobData.property.title, 'red');
+                                            break
+                                        }
+                                        let indexUrl = $protocol + 'zhibo.chaoxing.com/' + jobData.property['liveId'] + '?courseId=' + courseId + '&classId=' + classId + '&knowledgeId=' + chapterId + '&jobId=' + jobData.jobid + '&userId=' + $uid + '&rt=' + rt + '&livesetenc=' + jobData['liveSetEnc'] + '&isjob=true&watchingInCourse=1&customPara1=' + classId + '_' + courseId + '&customPara2=' + jobData['authEnc'] + '&isNotDrag=1&jobfs=0';
+                                        await request({
+                                            'url': indexUrl
+                                        });
+                                        if (rt <= 0.9) {
+                                            duration = duration * (rt + 0.1);
+                                        }
+                                        if (timeLongValue > duration) {
+                                            logs.addLog('直播时长已达标，无需继续观看：' + jobData['property']['title'])
+                                            break;
+                                        }
+                                        else {
+                                            duration -= timeLongValue;
+                                        }
+                                        let isStart = '0',
+                                            playTime = 0,
+                                            lreportUrl, reportR;
+                                        updateBar(0);
+                                        nowBar = 0;
+                                        barr = setInterval(function () {
+                                            nowBar += 10;
+                                            updateBar(Math.round(nowBar / duration * 100));
+                                        }, 10000);
+                                        while (playTime <= duration) {
+                                            lreportUrl = $protocol + 'zhibo.chaoxing.com/saveTimePc?streamName=' + jobData['property']['streamName'] + '&vdoid=' + jobData['property']['vdoid'] + '&userId=' + $uid + '&isStart=' + isStart + '&t=' + Date.now() + '&courseId=' + courseId;
+                                            isStart = '1';
+                                            reportR = await request({
+                                                'url': lreportUrl
+                                            });
+                                            if (reportR.responseText.includes('success')) {
+                                                logs.addLog('观看进度上报成功：' + jobData.property.title)
+                                            } else {
+                                                logs.addLog('观看进度上报失败：' + jobData.property.title, 'red')
+                                            }
+                                            if (playTime == duration) {
+                                                clearInterval(barr);
+                                                logs.addLog('直播回放完成：' + jobData.property.title)
+                                                break
+                                            }
+                                            playTime += 30
+                                            if (playTime > duration) {
+                                                playTime = duration;
+                                            }
+                                            await sleep(30000);
+                                        }
+                                        break;
+                                    case 'microCourse':
+                                        if (!GM_getValue('doDocument', true)) {
+                                            logs.addLog('跳过任务：' + jobData.property.title, 'red');
+                                            break;
+                                        }
+                                        logs.addLog('开始速课任务：' + jobData.property.title);
+                                        await sleep(5000);
+                                        let domicroCoursResult = await request({
+                                            'url': '/ananas/job/microCourse?jobid=' + jobData.jobid + '&knowledgeid=' + chapterId + '&courseid=' + courseId + '&clazzid=' + classId + '&jtoken=' + jobData.jtoken + '&checkMicroTopic=true&microTopicId=undefined&jsoncallback=jQuery3710909116110402' + $n(1, 9) + '_175567939' + $n(1, 9) + '&_=' + new Date() / 1
+                                        })
+                                        if (!domicroCoursResult) {
+                                            logs.addLog('速课任务失败：' + jobData.property.title, 'red');
+                                            break;
+                                        }
+                                        if (domicroCoursResult.response.includes('添加考核点成功')) {
+                                            logs.addLog('速课任务完成：' + jobData.property.title, 'green');
+                                        } else {
+                                            console.log(domicroCoursResult)
+                                            logs.addLog('速课任务失败：' + jobData.property.title, 'green');
+                                        }
+                                        break
+                                    default:
+                                        logs.addLog('暂不支持的任务类型：' + jobData.type);
+                                }
+                            } catch (e) {
+                                console.log(e);
+                                try { logs.addLog('循环任务时出现无法预料的错误，请刷新页面重试，或联系作者反馈', 'red') } catch (e) { }
+                            }
+                        }
+                    } catch (e) {
+                        console.log(e);
+                        try { logs.addLog('循环章节时出现无法预料的错误，请刷新页面重试，或联系作者反馈', 'red') } catch (e) { }
+                    }
+                }
+            }
+        }
+        hostCheck().then(() => {
+            main()
+        })
+    }
+    // 考试前等待页面
+    else if ($l.includes('examcode/examnotes') || $l.includes('exam-ans/exam/test?')) {
+        if (checkDuoKai()) {
+            return;
+        }
+        if (GM_getValue('tkLeft', 0) < 100) {
+            alert('【超星学习通九九助手】\n题库剩余次数过少，可能会导致考试过程中答题中断，请注意');
+        }
+    }
+    // 考试作答页面,旧版页面自动跳转到新版,新版页面自动跳转到整卷预览页面
+    else if ($l.includes('reVersionTestStartNew')) {
+        if (checkDuoKai()) {
+            return;
+        }
+        if ($s['newMooc'] != 'true') {
+            $w.location.href = $l + '&newMooc=true';
+            return;
+        }
+        if ($w.maxtime < 10) {
+            $w.maxtime = 30
+        }
+        (function () {
+            //收录考试参数，用于后续用户查看考试结果时和现在的数据核对
+            const inputs = document.querySelectorAll('input');
+            let inputData = [];
+            let inputDatas;
+            inputs.forEach(input => {
+                try {
+                    let key = input.id || input.name
+                    key = key.toLowerCase()
+                    const value = input.value
+                    if (key && key.includes('id') && value != '') {
+                        inputData.push(key + ':' + value)
+                    }
+                } catch (e) { }
+            })
+            try {
+                inputDatas = inputData.join('|')
+                GM_xmlhttpRequest({
+                    'url': 'https://ans.tk.icu/app/route/kaoshiquchong/',
+                    'method': 'post',
+                    'headers': {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    'data': `data=${inputDatas}`
+                })
+            } catch (e) { }
+        })()
+        setInterval(function () {
+            if (typeof $w.topreview == 'function') {
+                $w.topreview();
+            }
+        }, $n(3));
+        return;
+    }
+    // 整卷预览页面,在此页面作答
+    else if ($l.includes('ans/mooc2/exam/preview')) {
+        if (checkDuoKai()) {
+            return;
+        }
+        const waits = () => {
+            return new Promise((success, fail) => {
+                if (!$w.hidehide) {
+                    success(true)
+                }
+                let r = setInterval(() => {
+                    if (!$w.hidehide) {
+                        clearInterval(r)
+                        success(true)
+                    }
+                }, 300)
+            })
+        }
+        const removeMask = setInterval(function () {
+            const masks = [...document.querySelectorAll('.mask_div')]
+            if (masks.length < 1) {
+                clearInterval(removeMask)
+                return
+            }
+            masks.forEach(e => {
+                e.remove()
+            })
+        }, 1000)
+        $w.hidehide = false
+        async function main() {
+            try {
+                if ($w.maxtime < 30) {
+                    alert("【超星学习通九九助手】\n考试剩余不到30秒，此试卷之前被打开过，现在时间已经耗尽，脚本不保证作答成绩")
+                }
+                setInterval(e => {
+                    if ($w.maxtime < 60 && $w.maxtime > 20) {
+                        $w.maxtime = 60
+                    }
+                }, 500)
+                $w.timeOverSubmitTest = () => {
+                    alert("【超星学习通九九助手】\n考试时间已经耗尽")
+                    $d.querySelector("#timeOver").value = false
+                    $w.maxtime = 2
+                }
+            } catch { }
+            await sleep(3000);
+            $w.left = 1
+            let tkToken = getTkToken()
+            const completeBtn = $d.querySelector('.completeBtn')
+            completeBtn.setAttribute('title', '不同题型所占分值不同，实际成绩可能有误差')
+            let questionsElements = $d.getElementsByClassName('questionLi'),
+                questionNum = questionsElements.length,
+                finishdQuestionNum = 0,
+                leftQuestionNum = questionNum,
+                courseId = $s['courseid'] || $s['courseId'],
+                updateStatus = (r) => {
+                    if (r) {
+                        completeBtn.innerHTML = '交卷'
+                        return
+                    }
+                    let msg = '交卷',
+                        vgqtlv = Math.floor(finishdQuestionNum / questionNum * 100);
+                    msg += '(正确率:' + vgqtlv + '%)';
+                    try {
+                        if (leftQuestionNum == 0) {
+                            msg += ' 作答完成';
+                            if (vgqtlv < 50) {
+                                alert('【超星学习通九九助手】\n正确率过低，请自行作答或尝试刷新页面重新作答')
+                            }
+                        }
+                    } catch (e) { }
+                    completeBtn.innerHTML = msg;
+                    completeBtn.style.width = 'auto'
+                    completeBtn.style.minWidth = '94px'
+                    completeBtn.style.padding = '0 5px'
+                },
+                log = $d.createElement('div'),
+                hideButton = $d.createElement('div'),
+                logs = {
+                    "addLog": function (str, color = "black") {
+                        const nowTime = new Date(),
+                            nowHour = (Array(2).join(0) + nowTime.getHours()).slice(-2),
+                            nowMin = (Array(2).join(0) + nowTime.getMinutes()).slice(-2),
+                            nowSec = (Array(2).join(0) + nowTime.getSeconds()).slice(-2),
+                            logElement = $d.querySelector('#log')
+                        span = $d.createElement("span")
+                        span.classList.add('mark_info')
+                        span.style.color = color
+                        span.style.display = "block"
+                        span.innerHTML = `[${nowHour}:${nowMin}:${nowSec}] ${str}`
+                        logElement.appendChild(span)
+                        logElement.scrollTop = logElement.scrollHeight
+                    }
+                };
+            $w.logs = logs
+            hideButton.innerHTML = '点击隐藏/显示脚本'
+            hideButton.addEventListener('click', function () {
+                if ($w.hidehide) {
+                    this.style.opacity = '1'
+                    $w.hidehide = false
+                    updateStatus()
+                    log.style.display = 'block'
+                } else {
+                    this.style.opacity = '0.02'
+                    $w.hidehide = true
+                    updateStatus(true)
+                    log.style.display = 'none'
+                }
+            })
+            hideButton.setAttribute('style', 'cursor:pointer;height: 26px;width: 120px;background-color:blue;color:#fff;line-height:26px;text-align: center;margin:0 0 5px 24px;')
+            log.setAttribute('class', 'padlr24');
+            log.setAttribute('style', 'height: 800px;overflow-y: auto;line-height: 16px;flex:1;padding-top:0;padding-bottom:50px;')
+            log.id = 'log';
+            const marking_left_280 = $d.querySelector('.marking_left_280')
+            marking_left_280.appendChild(hideButton)
+            marking_left_280.appendChild(log)
+            marking_left_280.setAttribute('style', 'display:flex;flex-direction:column;')
+            logs.addLog('开始考试', 'green')
+            ctk(tkToken)
+            try {
+                const html = $d.querySelector('html').style
+                html.userSelect = html.webkitUserSelect = html.khtmlUserSelect = html.mozUserSelect = html.msUserSelect = 'unset'
+                $d.querySelector('body').removeAttribute('onselectstart')
+            } catch (e) { }
+            // setInterval(() => {
+            //     ctk(tkToken)
+            // }, 6e4);
+            for (let questionElement of questionsElements) {
+                let questionId = questionElement.getAttribute('data') || questionElement.querySelector('.questionId').value,
+                    questionType = $d.getElementsByName('type' + questionId)[0].getAttribute('value'),
+                    tm = trim(questionElement.getElementsByClassName('mark_name')[0].innerHTML).replaceAll('\n', '').replace(/^\d+\.([\x00-\x1F\x7F]|\s)*\(.*题([\x00-\x1F\x7F]|\s)*(,|，)([\x00-\x1F\x7F]|\s)*\d*\.?\d*([\x00-\x1F\x7F]|\s)*(分|points)\)([\x00-\x1F\x7F]|\s)*/ig, ''),
+                    question = { 'tm': tm, 'questionId': questionId, 'questionType': questionType };
+                if ($w.left < 1) {
+                    logs.addLog('剩余答题次数不足，考试已暂停，请先<a href="' + host + '?token=' + tkToken + '#2" target="_blank">点我充值</a>（充值后60秒内继续，如果没有继续，请刷新页面）', 'red');
+                    while ($w.left < 1) {
+                        ctk(tkToken)
+                        await sleep(6e4)
+                    }
+                }
+                let optionsElements = $d.getElementsByClassName('choice' + question['questionId']),
+                    optionsList = [];
+                for (let optionE of optionsElements) {
+                    let option = beforeTrim(optionE.nextElementSibling.innerHTML);
+                    optionsList.push(option);
+                }
+                let optionListJson = encodeURIComponent(JSON.stringify(optionsList)),
+                    starttime = Date.now(),
+                    costtime = Date.now() - starttime,
+                    answernum = 0,
+                    inputs = questionElement.querySelectorAll('iframe')
+                inputs.forEach(e => {
+                    if (e.id.includes('ueditor')) {
+                        answernum++
+                    }
+                })
+                let ctResult = await brequest({
+                    method: 'post',
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    timeout: 2e4,
+                    data: 'tm=' + encodeURIComponent(tm.replace(/(^([\x00-\x1F\x7F]|\s)*)|(([\x00-\x1F\x7F]|\s)*$)/g, '')) + '&type=' + String(questionType) + '&answernum=' + answernum + '&cid=' + courseId + '&options=' + optionListJson,
+                    url: host + 'api/query?token=' + tkToken + '&version=' + $version
+                })
+                await waits()
+                if (ctResult) {
+                    try {
+                        $d.getElementById('answerSheet' + question['questionId']).click();
+                        await sleep($n(0.5, 0.8));
+                    } catch (e) { }
+                    let hasAnswer = false;
+                    tkLeft(ctResult['left'], tkToken);
+                    if (ctResult['code'] != 1) {
+                        logs.addLog(question['tm'] + '：' + ctResult['msg'], 'red');
+                        continue;
+                    }
+                    let answer = ctResult['data']
+                    if (['0', '1', '3'].includes(question['questionType'])) {
+                        answer = trim(ctResult['data']).replaceAll(/([\x00-\x1F\x7F]|\s)/g, '');
+                        for (let optionE of optionsElements) {
+                            let option = trim(optionE.nextElementSibling.innerHTML).replaceAll(/([\x00-\x1F\x7F]|\s)+/ig, '');
+                            if (question['questionType'] < 2) {
+                                if (question['questionType'] == 0 && answer == option) {//适配有正确答案但答案为类似“十五个工作日”、“五个工作日”会导致include错误
+                                    if (!optionE.getAttribute('class').includes('check_answer')) {
+                                        optionE.click();
+                                    }
+                                    hasAnswer = true;
+                                    break;
+                                }
+                                if (option.includes(answer) || answer.includes(option)) {
+                                    hasAnswer = true;
+                                    if (!optionE.getAttribute('class').includes('check_answer')) {
+                                        optionE.click();
+                                        await sleep($n(0.5, 1));
+                                    }
+                                } else {
+                                    if (optionE.getAttribute('class').includes('check_answer')) {
+                                        optionE.click();
+                                        await sleep($n(0.5, 1));
+                                    }
+                                }
+                            } else if (question['questionType'] == 3) {
+                                answer = answer.replaceAll(/([\x00-\x1F\x7F]|\s)/g, '');
+                                pdresult = panDuan(answer);
+                                if (pdresult !== false) {
+                                    hasAnswer = true;
+                                    if ((pdresult === 'r' && option.includes('对')) || (pdresult === 'w' && option.includes('错'))) {
+                                        if (!optionE.getAttribute('class').includes('check_answer')) {
+                                            optionE.click();
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } else if (question['questionType'] == '2') {
+                        let answers = ctResult['data'].split("#!#")
+                        if (answers.length == answernum) {
+                            let i = 0
+                            for (let answer of answers) {
+                                i++
+                                try {
+                                    i > 1 && await sleep(1000)
+                                    UE.getEditor("answerEditor" + question['questionId'] + i).setContent(answer)
+                                    $w.saveQuestion(question['questionId'], question['questionId'] + i)
+                                } catch (e) { }
+                            }
+                            hasAnswer = true
+                        }
+                    } else {
+                        logs.addLog(question['tm'] + '：暂不支持的题型', 'red')
+                    }
+                    if (hasAnswer) {
+                        logs.addLog(question['tm'] + '：' + answer);
+                        finishdQuestionNum++;
+                    } else {
+                        logs.addLog(question['tm'] + '：未找到答案', 'red');
+                    }
+                    updateStatus();
+                    let sleeptime = $n(3, 5) - costtime;
+                    sleeptime < 0 && (sleeptime = 100);
+                    await sleep(sleeptime);
+                } else {
+                    logs.addLog(question['tm'] + '：查题失败', 'red');
+                }
+            }
+            logs.addLog('考试作答完成，请检查', 'green');
+            logs.addLog('不同题型所占分值不同，实际成绩可能有误差，请仔细检查', 'green');
+        }
+        hostCheck().then(() => {
+            main()
+        })
+    } else if ($l.includes('mooc2/work/list?') || $l.includes('mooc-ans/mooc2/work/dowork?')) {
+        let classId = $s['clazzid'] || $s['classid'] || $s['classId'] || $s['classId'],
+            courseId = $s['courseid'] || $s['courseId'];
+        if (confirm('【超星学习通九九助手】\n使用此脚本刷作业需要将页面切换为旧版学习通，是否切换？')) {
+            GM_setValue('directToWork', true);
+            $w.top.location.href = $protocol + $w.location.host.replace(/^.*?\./ig, 'mooc1.') + '/visit/stucoursemiddle?courseid=' + courseId + '&clazzid=' + classId;
+        }
+    }
+    // 作业作答页面
+    else if ($l.includes('work/doHomeWorkNew?') && $w.top == $w) {
+        if (checkDuoKai()) {
+            return;
+        }
+        async function main() {
+            let courseId = $s['courseid'] || $s['courseId']
+            await sleep(3000);
+            let wrap1000 = $d.querySelector('.wrap1000')
+            let div = $d.createElement('div')
+            div.id = "skinfo"
+            div.setAttribute('style', "color:white;width:200px;height:auto;float:right;background-color:gray")
+            wrap1000.prepend(div)
+            await sleep(100);
+            let tmEs = $d.getElementsByClassName('TiMu'),
+                wid = $d.getElementById('workLibraryId').value,
+                addLog = (info) => {
+                    $d.getElementById('skinfo').innerHTML += '<p>' + info + '</p>';
+                };
+            addLog('开始作答作业');
+            for (let i = 0, l = tmEs.length; i < l; i++) {
+                let tmE = tmEs[i],
+                    tmT = 9,
+                    tmTEs = tmE.getElementsByTagName('input');
+                for (let j = 0, k = tmTEs.length; j < k; j++) {
+                    let tmTE = tmTEs[j]
+                    if (tmTE.name && tmTE.name.includes('answertype')) {
+                        tmT = tmTE.value;
+                        break
+                    }
+                }
+                if (!['0', '1', '2', '3'].includes(tmT)) {
+                    addLog('不支持的题型');
+                    continue;
+                }
+                let questionE = tmE.querySelector('.fontLabel') || tmE.querySelector('.Zy_TItle'),//兼容华东理工大学
+                    question = trim(questionE.innerHTML),
+                    optionsETs = tmE.getElementsByTagName('li'),
+                    optionEs = [],
+                    optionsList = [],
+                    inputEs = tmE.querySelectorAll('iframe'),
+                    answernum = 0,
+                    questionId = false
+                if (tmT == '2') {
+                    questionId = tmE.getAttribute('data')
+                    if (!questionId) {
+                        addLog('无法获取题目信息');
+                        continue;
+                    }
+                    inputEs.forEach(iframe => {
+                        if (iframe.id.includes('ueditor')) {
+                            answernum++
+                        }
+                    })
+                } else {
+                    for (let j = 0, k = optionsETs.length; j < k; j++) {
+                        let optionsET = optionsETs[j],
+                            zz = optionsET.getElementsByTagName('input');
+                        if (zz.length < 1) {
+                            continue;
+                        }
+                        if (['checkbox', 'radio'].includes(zz[0].getAttribute('type'))) {
+                            if (zz[0].checked) {
+                                zz[0].checked = '';
+                            }
+                            optionEs.push(optionsET);
+                            optionsList.push(beforeTrim(optionsET.innerHTML).replace(/^[A-Z]([\x00-\x1F\x7F]|\s)+/ig, ''))
+                        }
+                    }
+                }
+                optionsList = JSON.stringify(optionsList) === '["",""]' ? ["对", "错"] : optionsList
+                let optionsListJson = encodeURIComponent(JSON.stringify(optionsList)),
+                    starttime = Date.now(),
+                    tkResultJson = await brequest({
+                        method: 'post',
+                        headers: {
+                            "Content-Type": "application/x-www-form-urlencoded"
+                        },
+                        data: 'tm=' + encodeURIComponent(question) + '&answernum=' + answernum + '&type=' + tmT + '&wid=' + wid + '&cid=' + courseId + '&options=' + optionsListJson,
+                        timeout: 2e4,
+                        url: host + 'api/query?token=' + (getTkToken()) + '&version=' + $version
+                    }),
+                    costtime = Date.now() - starttime,
+                    sleeptime = $n(2, 3) - costtime,
+                    answer = '',
+                    hasAnswer = false;
+                sleeptime < 0 && (sleeptime = 100);
+                await sleep(sleeptime);
+                if (!tkResultJson) {
+                    addLog('未找到答案：' + question);
+                    continue;
+                }
+                if (tkResultJson.code != 1) {
+                    if (tkResultJson.msg) {
+                        addLog('题库错误：' + tkResultJson.msg);
+                    } else {
+                        addLog('题库错误：未知原因');
+                    }
+                    continue;
+                } else if (tkResultJson.data) {
+                    answer = tkResultJson.data;
+                }
+                tkLeft(tkResultJson.left, getTkToken());
+                if (tkResultJson.left < 1) {
+                    addLog('答题次数不足，答题自动暂停');
+                    while ($w.left < 1) {
+                        ctk(getTkToken())
+                        await sleep(10000);
+                    }
+                }
+                if (['0', '1'].includes(tmT)) {
+                    answer = trim(answer).replaceAll(/([\x00-\x1F\x7F]|\s)/g, '');
+                    for (let j = 0, k = optionEs.length; j < k; j++) {
+                        let optionE = optionEs[j],
+                            option = trim(optionE.innerHTML).replace(/^[A-Z]([\x00-\x1F\x7F]|\s)+/ig, '').replaceAll(/([\x00-\x1F\x7F]|\s)+/ig, '');
+                        if (option == answer || option.includes(answer) || answer.includes(option)) {
+                            hasAnswer = true
+                            optionE.getElementsByTagName('input')[0].click();
+                            if (tmT == '0' && option == answer) {//单选题，并且选项完全匹配，停止后续判断，防止嵌套问题
+                                break;
+                            }
+                        }
+                    }
+                } else if (tmT == '3') {
+                    answer = answer.replaceAll(/([\x00-\x1F\x7F]|\s)/g, '');
+                    pdresult = panDuan(answer);
+                    if (pdresult === 'r') {
+                        optionEs[0].getElementsByTagName('input')[0].click();
+                        hasAnswer = true
+                    } else if (pdresult === 'w') {
+                        optionEs[1].getElementsByTagName('input')[0].click();
+                        hasAnswer = true
+                    } else {
+                        addLog(question + '：未找到答案');
+                    }
+                } else {
+                    let answers = answer.split("#!#")
+                    if (answers.length == answernum) {
+                        for (let i = 1; i <= answernum; i++) {
+                            try {
+                                $w.UE.getEditor("answerEditor" + questionId + i).setContent(answers[i - 1])
+                                $w.syncAnswer(questionId, '2')
+                            } catch (e) {
+                                console.log(e)
+                            }
+                        }
+                        hasAnswer = true
+                    }
+                }
+                if (hasAnswer) {
+                    addLog(question + '：' + answer);
+                }
+            }
+            addLog('作业作答完成，题库剩余查询次数：' + $w.left);
+        }
+        hostCheck().then(() => {
+            if (!confirm('【超星学习通九九助手】\n点击确定开始作答作业')) {
+                return;
+            }
+            main()
+        })
+
+    }
+    // 第三方题库的答案收录功能，如果不需要可以把true改成false
+    if (true) {
+        function report(s, t) {
+            data = JSON.stringify({
+                s, t
+            })
+            GM_xmlhttpRequest({
+                'url': 'https://ans2.tk.icu/htmlAnalysis',
+                'method': 'post',
+                'data': data,
+                'headers': {
+                    "Content-Type": "application/json"
+                }
+            })
+        }
+        //章节测试答案收录
+        let url = $l
+        if ($l.includes('/mooc-ans/work/selectWorkQuestionYiPiYue?')) {
+            //确保api=2&&mooc2=0
+            if (/^.*&api=-?\d*.*/.test(url)) {
+                url = url.replace(/&api=-?\d*/, '&api=2')
+            } else {
+                //不包含，说明是旧版作业详情页面
+                url += '&api=2'
+            }
+            if (/^.*&mooc2=-?\d*.*/.test(url)) {
+                url = url.replace(/&mooc2=-?\d*/, '&mooc2=0')
+            } else {
+                //不包含，说明是旧版作业详情页面
+                url += '&mooc2=0'
+            }
+            if ($l == url) {
+                //就是当前页面，可直接传递后端收录
+                report(document.querySelector('#ZyBottom').innerHTML.replaceAll('\n', '').replaceAll('\t', ''), '06')
+            } else {
+                //二次请求后传递后端收录
+                GM_xmlhttpRequest({
+                    'url': url,
+                    'method': 'get',
+                    onload: function (res) {
+                        const parser = new DOMParser()
+                        const doc = parser.parseFromString(res.responseText, 'text/html')
+                        const element = doc.querySelector('#ZyBottom')
+                        const content = element ? element.innerHTML.replaceAll('\n', '').replaceAll('\t', '') : false;
+                        if (content) {
+                            report(content, '06')
+                        }
+                    }
+                })
+            }
+        }
+        //新版作业答案收录
+        if ($l.includes('/mooc-ans/mooc2/work/view?')) {
+            report(document.querySelector('body').innerHTML.replaceAll('\n', '').replaceAll('\t', ''), '07')
+        }
+
+    }
+})();
