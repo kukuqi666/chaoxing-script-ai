@@ -322,13 +322,13 @@
         },
         queryApis: [
           {
-            name: "题库",
-            token: "",
-            url: "http://api.tikuhai.com"
+            name: "自建题库",
+            token: "b1k1ntthvgrspz76wotvacm0gu1ey1eh",
+            url: "http://localhost:3000"
           }
           // {
-          //     name: '一之题库',
-          //     token: '',
+          //     name: "题库",
+          //     token: "",
           //     url: "http://api.tikuhai.com"
           // }
         ]
@@ -5011,9 +5011,9 @@
     msg
   });
   const apis = [
-    "http://api.tikuhai.com/search"
-    // "http://62.234.36.191" + '/search',
-    // Add more URLs as needed
+    "http://localhost:3000/search"
+    // 如果需要添加更多API，在这里添加
+    // "http://your-api.com/search"
   ];
   const getAnswerFrom = async (question, url2) => {
     var _a;

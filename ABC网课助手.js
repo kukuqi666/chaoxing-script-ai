@@ -2094,14 +2094,12 @@
     try {
       const setting = useSettingStore();
       const selector = setting.serverNode;
-      switch (selector) {
-        case "server2":
-          return "http://cs.dkjdda.top";
-        default:
-          return "http://154.44.26.234";
-      }
+      // 改成你的后端地址
+      return "http://localhost:3000"; 
+      
+
     } catch (error) {
-      return "http://154.44.26.234";
+      return "http://localhost:3000";
     }
   };
   const TIMEOUT_ERROR_MSG$1 = "请求超时，请前往设置尝试切换节点..";

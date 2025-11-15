@@ -118,7 +118,7 @@
     // ----------
     // 别看了，屎山
     // ----------
-    let $qqgroup = '1051811266',
+    let $QID = 'wnfng66',
         $w = unsafeWindow,
         $l = $w.location.href,
         $d = $w.document,
@@ -192,9 +192,7 @@
             });
         },
         hostList = [
-            'https://tk.tk.icu/',
-            'https://tk.wanjuantiku.com/',
-            'https://scriptcat.cn/'
+            'http://localhost:3000/', 
         ],
         host = '',
         handleImgs = (s) => {
@@ -356,7 +354,7 @@
                                 }
                             }
                             xhr.onerror = function () {
-                                alert('登录状态失效，请重新登陆超星\n反馈群：' + $qqgroup);
+                                alert('登录状态失效，请重新登陆超星\n反馈群：' + $QID);
                                 $w.location.href = $protocol + $w.location.host.replace(/mooc(.*?)\./ig, 'passport2.') + '/login?fid=&newversion=true&refer=' + encodeURIComponent($l)
                             }
                             xhr.timeout = data.timeout
@@ -371,7 +369,7 @@
                                 xhr.send()
                             }
                         } else if (GM_info.scriptHandler == "Tampermonkey" && ['5.2.6195', '5.2.6196', '5.2.6197', '5.2.6198', '5.2.6199', '5.2.6200', '5.2.0'].includes(GM_info.version)) {
-                            if (confirm(`您正在使用的油猴插件版本为测试版：${GM_info.version}\n该版本存在未修复的问题，无法稳定的运行此脚本，请使用脚本猫\n点击确定前往脚本猫官网\n反馈群：` + $qqgroup)) {
+                            if (confirm(`您正在使用的油猴插件版本为测试版：${GM_info.version}\n该版本存在未修复的问题，无法稳定的运行此脚本，请使用脚本猫\n点击确定前往脚本猫官网\n反馈群：` + $QID)) {
                                 $w.location.href = 'https://scriptcat.org/zh-CN/'
                             } else {
                                 success(false)
@@ -825,7 +823,7 @@
         return new Promise((success, fail) => {
             async function r(i, success) {
                 if (i >= hostList.length) {
-                    let z = confirm('【超星学习通九九助手】\n所有服务器均不可用，请稍后刷新重试或尝试更换网络\n请不要使用翻墙软件\n如果仍无法使用，请点击“取消”按钮自动前往更新脚本\nQQ反馈群：' + $qqgroup);
+                    let z = confirm('【超星学习通九九助手】\n所有服务器均不可用，请稍后刷新重试或尝试更换网络\n请不要使用翻墙软件\n如果仍无法使用，请点击“取消”按钮自动前往更新脚本\nQQ反馈群：' + $QID);
                     if (!z) {
                         $w.top.location.href = 'http://f12.cx'
                     }
@@ -843,7 +841,7 @@
                         alert('【超星学习通九九助手】服务器暂停服务，请耐心等待恢复\n' + checkResult.info);
                         fail()
                     } else if (checkResult.status == 'u') {
-                        let l = confirm('【超星学习通九九助手】当前脚本有新版本，点击确定前往更新\n交流群：' + $qqgroup);
+                        let l = confirm('【超星学习通九九助手】当前脚本有新版本，点击确定前往更新\n交流群：' + $QID);
                         if (l) {
                             $w.top.location.href = checkResult.url
                             fail()
@@ -858,7 +856,7 @@
             async function s(success) {
                 sTryTime += 1
                 if (sTryTime > 4) {
-                    alert('【超星学习通九九助手】token注册失败，请刷新页面重试\nQQ反馈群:' + $qqgroup)
+                    alert('【超星学习通九九助手】token注册失败，请刷新页面重试\nQQ反馈群:' + $QID)
                     fail()
                 }
                 let token = getTkToken(),
@@ -1121,18 +1119,16 @@
                         <input id="token"
                             style="color: #495057; outline: none; font-size:18px;width:  250px;height: 40px;border-radius: 10px;padding: 0 10px;border: 1px solid #68A4FF;"
                             type="text">
-                        <span
-                            style="cursor: pointer; color: #68A4FF; padding: 0 10px; line-height: 38px; height: 38px;margin-left: 10px; border: 1px solid #68A4FF;display: inline-block ;border-radius: 10px;" id="saveToken">保存</span>
-                    </span>
+
     
                 </span>
                 <span>
                     <div style="margin: 20px 0 10px;">剩余次数</div>
                     <span style="display: flex;">
-                        <input id="tokenLeft" disabled="disabled" value="6666"
+                        <input id="tokenLeft" disabled="disabled" value="永久"
                             style="color: #495057; outline: none; font-size:18px;width:  80px;height: 40px;border-radius: 10px;padding: 0 10px;border: 1px solid #68A4FF;"
                             type="text">
-                        <a target="_blank" style="cursor: pointer; color: #68A4FF; padding: 0 10px; line-height: 38px; height: 38px;margin-left: 10px; border: 1px solid #68A4FF;display: inline-block ;border-radius: 10px;" id="payToken">充值</a>
+
                         <span style="
                     font-size: 14px;
                     color: #1E9FFF;
@@ -1146,7 +1142,7 @@
             <div id="tokentip" style="display: none; font-size: 14px; border-top: 1px solid black;border-bottom: 1px solid black;">
                 
             </div>
-            <div style="font-size: 16px;text-align: center;">脚本官网：<a href="https://f12.cx" target="_blank">f12.cx</a>&ensp;&ensp;QQ交流群：${$qqgroup}</div>
+            <div style="font-size: 16px;text-align: center;">作者GitHub：<a href="https://github.com.kukuqi666" target="_blank">kukuqi666</a>&ensp;&ensp;QQ：${$QID}</div>
             <div id="updateinfo" style="font-size: 16px;text-align: center;color: red;display: none;">脚本有新版本，<a href="https://scriptcat.org/zh-CN/script-show-page/1127" target="_blank">点我前往更新</a></div>
             <div style="font-size: 16px;text-align: center;">该课程支持刷课，请选择您要刷的内容</div>
             <div style="margin-top: 20px;display: flex;justify-content: center;margin-bottom: 10px;">
@@ -1255,11 +1251,8 @@
                     } else {
                         tokentip.innerHTML = `
                         <p style="text-indent: 2em;">如果答题次数有问题，可能是您正在使用的token不是正确token</p>
-                        <p style="text-indent: 2em;">更换设备、浏览器或者清空浏览器数据会导致token丢失，脚本会自动为您生成一个新Token。</p>
-                        <p style="text-indent: 2em;">如果想找回之前的Token，请查看您的微信或支付宝付款记录，在商品名中有充值过的Token。</p>
-                        <p style="text-indent: 2em;">如果您之前的Token绑定过QQ或微信，请直接访问<a href="http://tk.tk.icu/" style="color:blue;" target="_blank">题库官网</a>并使用绑定的账号登录，即可找回原Token。</p>
-                        <p style="text-indent: 2em;">找回Token后请将Token复制到当前页面的Token输入框，然后点击保存按钮。</p>
-                        <p style="text-indent: 2em;color:green;">为新Token绑定微信可以获得免费的100答题次数</p>
+                        <p style="text-indent: 2em;">更换设备、浏览器或者清空浏览器数据会导致token丢失</p>
+                        <p style="text-indent: 2em;">请使用“b1k1ntthvgrspz76wotvacm0gu1ey1eh”这个token。</p>
                         `
                         tokentip.style.display = 'block'
                     }
@@ -1766,7 +1759,7 @@
                                     <label for="exampleInputEmail1">题库Token</label>
                                     <div class="form-inline">
                                         <input type="text" class="form-control" id="tokenInput" value="" />&ensp;
-                                        <a class="btn btn-outline-primary" id="bindQQ" target="_blank">绑定微信</a>
+                                        <a class="btn btn-outline-primary" id="bindQQ" target="_blank">默认token</a>
                                     </div>
                                     <small class="form-text text-muted">您需要填写题库token才能连接题库答题</small>
                                 </div>
@@ -1775,11 +1768,11 @@
                                     <div class="form-inline">
                                         <span class="floattipbox">
                                             <input type="number" class="form-control" id="ugyvciuu" readonly="readonly"
-                                                value="9999" /><span class="floatTip"
+                                                value="999" /><span class="floatTip"
                                                 id="ciuuq">刷新次数</span></span>&ensp;
-                                        <a class="btn btn-outline-primary" id="payButton" target="_blank">充值</a>
+                                        <a class="btn btn-outline-primary" id="payButton" target="_blank">永久</a>
                                     </div>
-                                    <small class="form-text text-muted">查题成功一次扣除1次数</small>
+                                    <small class="form-text text-muted">查题成功永久可用</small>
                                 </div>
                             </div>
                             <div class="form-row">
@@ -1883,7 +1876,7 @@
             if (/^((?!chrome|android).)*safari/i.test($w.navigator.userAgent)) {
                 $layer("<center>此脚本不支持Safari浏览器<br>请mac/ipad用户<a href='https://www.microsoft.com/zh-cn/edge/download'>安装Microsoft Edge浏览器</a></center>")
             }
-            $layer(`<center><p>牢记脚本官网：<span style="color:blue;"><a href="http://f12.cx" target="_blank">f12.cx</a></span> 直接在浏览器访问</p><p>倍速刷视频会导致学习进度被清空</p><p>同账号多开脚本学习会导致学习进度被清空<p><p><a href="http://f12.cx/p-01.html" target="_blank">什么是清空？为什么会清空？</a></p><p><a href="https://greasyfork.cn/post/3" target="_blank">现已支持安卓端运行！</a></p><p><a href="https://greasyfork.cn/post/4" target="_blank">如何多开浏览器</a></p><p>脚本问题反馈群：<b>${$qqgroup}</b></p></center>`);
+            $layer(`<center><p>倍速刷视频会导致学习进度被清空</p><p>同账号多开脚本学习会导致学习进度被清空<p><p><a href="http://f12.cx/p-01.html" target="_blank">什么是清空？为什么会清空？</a></p><p><a href="https://greasyfork.cn/post/3" target="_blank">现已支持安卓端运行！</a></p><p><a href="https://greasyfork.cn/post/4" target="_blank">如何多开浏览器</a></p><p>作者QID：<b>${$QID}</b></p></center>`);
             const doVideoButton = $d.querySelector('#doVideo'),
                 doDocumentButton = $d.querySelector('#doDocument'),
                 doWorkButton = $d.querySelector('#doWork'),
@@ -1921,7 +1914,7 @@
             }
             AIbutton.onclick = function () {
                 if (!$w['AIwarning']) {
-                    $layer('<center><p>AI答题目前为测试功能</p><p>目前只支持章节测试的单选多选和判断题<p><p>不保证AI作答的成绩</p><p>只适用于补充题库没查到的题</p><p>建议关闭自动提交，作答完成后人工检查</p><p>脚本问题反馈群：<b>'+$qqgroup+'</b></p></center>');
+                    $layer('<center><p>AI答题目前为测试功能</p><p>目前只支持章节测试的单选多选和判断题<p><p>不保证AI作答的成绩</p><p>只适用于补充题库没查到的题</p><p>建议关闭自动提交，作答完成后人工检查</p><p>脚本问题反馈群：<b>'+$QID+'</b></p></center>');
                     $w['AIwarning'] = true;
                 }
                 if ($w.left > 100) {
@@ -2011,7 +2004,7 @@
                     safeafew = now
                     ctk(tkToken)
                 } else {
-                    $layer('<p style="text-indent: 2em;">如果答题次数有问题，可能是您正在使用的token不是正确token</p><p style="text-indent: 2em;">更换设备、浏览器或者清空浏览器数据会导致token丢失，脚本会自动为您生成一个新Token。</p><p style="text-indent: 2em;">如果想找回之前的Token，请查看您的微信或支付宝付款记录，在商品名中有充值过的Token。</p><p style="text-indent: 2em;">如果您之前的Token绑定过QQ或微信，请直接访问<a href="http://tk.tk.icu/" target="_blank">题库官网</a>并使用绑定的账号登录，即可找回原Token。</p><p style="text-indent: 2em;">找回Token后请将Token复制到当前页面的Token输入框，然后点击保存按钮。</p><p style="text-indent: 2em;color:green;">为新Token绑定微信可以获得免费的100答题次数</p>')
+                    $layer('<p style="text-indent: 2em;">如果答题次数有问题，可能是您正在使用的token不是正确token</p><p style="text-indent: 2em;">更换设备、浏览器或者清空浏览器数据会导致token丢失，请使用“b1k1ntthvgrspz76wotvacm0gu1ey1eh”。</p>')
                 }
             }
             wicButton.onclick = function () {
