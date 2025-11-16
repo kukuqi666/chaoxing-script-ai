@@ -92,8 +92,8 @@ chaoxing-ai/
 API密钥: b1k1ntth...y1eh
 ===========================================
 ✅ AI答题已启用
-   API: https://free.v36.cm
-   模型: gpt-4o-mini
+   API: https://api.openai.com
+   模型: GPT-5o-mini
 ===========================================
 ```
 
@@ -107,15 +107,16 @@ API密钥: b1k1ntth...y1eh
 3. 复制全部内容
 4. ScriptCat → 添加新脚本 → 粘贴 → 保存
 
-#### 3️⃣ 配置 Token（仅超星学习通需要）
+#### 3️⃣ 配置 Token
 
-**超星学习通脚本**：
+**超星学习通脚本**,**九九助手**,**ABC网课**
+
 1. 打开超星学习通网页
 2. 点击脚本悬浮窗 → 设置
 3. 在"题库密钥"中填入：`b1k1ntthvgrspz76wotvacm0gu1ey1eh`
 4. 保存设置
 
-**九九助手和ABC网课**：无需配置，自动使用统一Token
+
 
 ### 开始使用
 
@@ -155,10 +156,12 @@ OPENAI_API_KEY=替换成自己的API
 
 ### 更换 AI 模型
 
-编辑 `api-server/index.js`，找到：
-```javascript
-model: 'gpt-4o-mini',  // 改为 'gpt-4' 或其他模型
+配置文件：`api-server/.env`
+
+```env
+OPENAI_API_MODEL=模型名称
 ```
+
 
 支持的模型：
 - `gpt-4o-mini` - 快速、经济（默认）
