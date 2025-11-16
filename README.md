@@ -2,6 +2,8 @@
 
 > 基于 GPT-4o-mini 的智能答题系统，支持超星学习通、九九助手、ABC网课助手等脚本
 
+> 默认使用的是OpenAI官方接口  可以在.env文件中修改为自己的兼容openai的接口，比如deepseek的接口或者其他第三方的接口
+
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen.svg)](https://nodejs.org/)
 [![AI](https://img.shields.io/badge/AI-GPT--4o--mini-orange.svg)](https://openai.com/)

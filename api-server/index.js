@@ -11,6 +11,7 @@ const API_KEY = process.env.API_KEY || 'b1k1ntthvgrspz76wotvacm0gu1ey1eh';
 // OpenAI代理配置
 const OPENAI_API_URL = process.env.OPENAI_API_URL || 'https://api.openai.com';
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY
+const MODEL = process.env.OPENAI_API_MODEL  || 'gpt-4o-mini';
 
 app.use(cors());
 app.use(express.json());
@@ -279,7 +280,7 @@ async function callOpenAI(prompt, retries = 3) {
           'Authorization': `Bearer ${OPENAI_API_KEY}`
         },
         body: JSON.stringify({
-          model: 'gpt-4o-mini',
+          model: MODEL,
           messages: [{
             role: 'user',
             content: prompt
@@ -548,6 +549,6 @@ app.listen(PORT, () => {
   console.log(`===========================================`);
   console.log(`✅ AI答题已启用`);
   console.log(`   API: ${OPENAI_API_URL}`);
-  console.log(`   模型: gpt-4o-mini`);
+  console.log(`   模型: ${MODEL}`);
   console.log(`===========================================`);
 });
