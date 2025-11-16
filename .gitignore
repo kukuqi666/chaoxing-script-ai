@@ -35,3 +35,23 @@ build/
 # Temporary files
 tmp/
 temp/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+
+# go
+go.mod
+go.sum
+vendor/
+*.exe
+*.dll
+*.so
