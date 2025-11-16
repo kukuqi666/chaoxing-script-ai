@@ -823,9 +823,9 @@
         return new Promise((success, fail) => {
             async function r(i, success) {
                 if (i >= hostList.length) {
-                    let z = confirm('【超星学习通九九助手】\n所有服务器均不可用，请稍后刷新重试或尝试更换网络\n请不要使用翻墙软件\n如果仍无法使用，请点击“取消”按钮自动前往更新脚本\nQQ反馈群：' + $QID);
+                    let z = confirm('【超星学习通九九助手】\n所有服务器均不可用，请看后台服务有没有启动起来\n如果仍无法使用，请点击联系作者\nQID：' + $QID);
                     if (!z) {
-                        $w.top.location.href = 'http://f12.cx'
+                        $w.top.location.href = 'https://github.com/kukuqi666/chaoxing-script-ai'
                     }
                     fail()
                     return

@@ -5063,7 +5063,7 @@
         return result;
       }
     }
-    return handleError("请求失败");
+    return handleError("请求失败，请查看API服务器是否运行正常");
   };
   class CxQuestionHandler extends BaseQuestionHandler {
     constructor(type, iframe) {

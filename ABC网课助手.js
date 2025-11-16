@@ -2103,7 +2103,7 @@
     }
   };
   const TIMEOUT_ERROR_MSG$1 = "请求超时，请前往设置尝试切换节点..";
-  const SERVER_MAINTENANCE_ERROR_MSG$1 = "服务器维护中，请前往设置尝试切换节点，自动刷课功能正常使用..";
+  const SERVER_MAINTENANCE_ERROR_MSG$1 = "请求失败，请查看API服务器是否运行正常..";
   const handleError$1 = (msg) => ({
     code: 10003,
     data: {
