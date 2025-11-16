@@ -1,6 +1,6 @@
 # 🎓 网课答题助手 - AI自动答题版
 
-> 基于 GPT-4o-mini 的智能答题系统，支持超星学习通、九九助手、ABC网课助手
+> 基于 GPT-4o-mini 的智能答题系统，支持超星学习通、九九助手、ABC网课助手等脚本
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Node](https://img.shields.io/badge/node-%3E%3D14.0.0-brightgreen.svg)](https://nodejs.org/)
@@ -35,8 +35,12 @@ chaoxing-ai/
 ├── api-server/                  # 后端服务
 │   ├── index.js                # API服务器（7个接口）
 │   ├── package.json            # 依赖配置
-│   ├── .env                    # 环境变量（已配置）
-│   └── .env.example            # 环境变量模板
+│   ├── main.py                 # pytohn版本API服务器
+│   └── main.go                 # go版本API服务器
+│   └── requirements.txt        # python依赖
+|   └── .env.example            # 环境变量模板
+│   └── README.md               # 项目说明文档
+|          
 │
 ├── images/                      # 截图和图片
 │   ├── 1.png
@@ -61,8 +65,8 @@ chaoxing-ai/
 ### 前置要求
 
 - ✅ Windows 操作系统
-- ✅ Node.js 14.0+ ([下载地址](https://nodejs.org/))
-- ✅ 浏览器扩展：ScriptCat
+- ✅ Node.js 22 ([下载地址](https://nodejs.org/))
+- ✅ 浏览器扩展：[ScriptCat](https://github.com/scriptscat/scriptcat)
 
 ### 三步启动
 
@@ -142,8 +146,8 @@ b1k1ntthvgrspz76wotvacm0gu1ey1eh
 
 ```env
 PORT=3000                                    # 服务器端口
-API_KEY=b1k1ntthvgrspz76wotvacm0gu1ey1eh   # 统一Token
-OPENAI_API_URL=https://api.openai.com          # OpenAI API地址
+API_KEY=b1k1ntthvgrspz76wotvacm0gu1ey1eh     # 统一Token
+OPENAI_API_URL=https://api.openai.com        # OpenAI API地址
 OPENAI_API_KEY=替换成自己的API
 ```
 
